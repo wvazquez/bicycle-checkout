@@ -1,25 +1,51 @@
 import React from 'react';
-import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText } from 'mdbreact';
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
-import './style.css';
+const useStyles = makeStyles({
+  card: {
+    maxWidth: 345,
+  },
+  media: {
+    height: 140,
+  },
+});
 
-const CardExample = (props) => {
+export default function ProductCard(props) {
+  const classes = useStyles();
+
   return (
-    <MDBCard className="card-container">
-        <MDBCardImage src={props.image} alt="MDBCard image cap" className="img-fluid card-image" top hover
-          overlay="white-slight" />
-        <MDBCardBody>
-          <MDBCardTitle tag="h5">{props.name} - {props.price}</MDBCardTitle>
-          <MDBCardText>
-            Some quick example text to build on the card title and make up
-            the bulk of the card's content.
-          </MDBCardText>
-          <MDBBtn color="primary" size="md">
-            add to cart
-          </MDBBtn>
-        </MDBCardBody>
-      </MDBCard>
-  )
+    <Card className={classes.card}>
+      <CardActionArea>
+        <CardMedia
+          className={classes.media}
+          image={props.image}
+          title={props.name}
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+           {props.name}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+            across all continents except Antarctica
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+        <Button size="small" color="primary">
+          Share
+        </Button>
+        <Button size="small" color="primary">
+          Learn More
+        </Button>
+      </CardActions>
+    </Card>
+  );
 }
-
-export default CardExample;
