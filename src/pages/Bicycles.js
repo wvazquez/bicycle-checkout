@@ -1,21 +1,27 @@
 import React from "react";
 import ProductCard from "../components/ProductCard";
 import { MDBCardGroup, MDBRow, MDBCol } from 'mdbreact';
-
-
-// import Tandem from "../../public/bicycles/tandembike.jpg";
-
+import {products} from '../data/bikerentals.json';
 const Bicycles = ()=> (
     <MDBCardGroup>
-    
-        <ProductCard image={'/bicycles/tandembike.jpg'}/>
-        <ProductCard image={'/bicycles/beachcruiserbike.jpeg'}/>
-        <ProductCard image={'/bicycles/kidsbike.jpg'}/>
-        <ProductCard image={'/bicycles/mountainbike.jpg'}/>
-        <ProductCard image={'/bicycles/roadbike.jpg'}/>
+        {
+            products.map(product => {
+                let {id,name,image,product_type} = product;
+                let price = formatMoney(product.price);
+                if(product_type === 'bike'){
+                    return (
+                        <ProductCard price={price} name={name} key={id} image={image}/>
+                    );
+                }
+            })
+        }
+        
+
 
         </MDBCardGroup>
 
 );
+
+const formatMoney = (number) => number.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
 
 export default Bicycles;
