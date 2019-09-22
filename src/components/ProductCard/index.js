@@ -1,19 +1,25 @@
 import React from 'react';
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText } from 'mdbreact';
 
+import './style.css';
+
 const CardExample = (props) => {
   return (
-      <MDBCard style={{ width: "22rem" }}>
-        <MDBCardImage className="img-fluid" src={props.image} waves />
+    <MDBCard className="card-container">
+        <MDBCardImage src={props.image} alt="MDBCard image cap" className="img-fluid card-image" top hover
+          overlay="white-slight" />
         <MDBCardBody>
-          <MDBCardTitle>Card title</MDBCardTitle>
+          <MDBCardTitle tag="h5">Panel title</MDBCardTitle>
           <MDBCardText>
-            Some quick example text to build on the card title and make
-            up the bulk of the card&apos;s content.
+            Some quick example text to build on the card title and make up
+            the bulk of the card's content.
           </MDBCardText>
-          <MDBBtn href="#">MDBBtn</MDBBtn>
+          <MDBBtn color="primary" size="md">
+            read more
+          </MDBBtn>
         </MDBCardBody>
       </MDBCard>
+      
   )
 }
 
