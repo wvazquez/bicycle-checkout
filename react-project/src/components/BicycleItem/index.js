@@ -34,6 +34,10 @@ class BicycleItem extends Component{
             this.setState({quantity: 0})
         }
     }
+    handleForm = (event)=>{
+        event.preventDefault();
+        alert('form submitted');
+    }
 
     componentDidMount(){
         const id = parseInt(this.props.match.params.id);
@@ -77,7 +81,7 @@ class BicycleItem extends Component{
                 <img src={this.state.image} alt={this.state.name} />
                 <p>{this.state.name}</p>
                 <p>{this.state.price}</p>
-                <form className={classes.container} noValidate>
+                <form className={classes.container} >
 
                     <FormControl>
                         <TextField
@@ -109,7 +113,7 @@ class BicycleItem extends Component{
                     />
                 </FormControl>
 
-                    <Button variant="contained" color="primary" className={classes.button}>
+                    <Button onClick={event => this.handleForm(event)} variant="contained" color="primary" className={classes.button}>
                         Reserve 
                         <Icon className={classes.rightIcon}>send</Icon>
                     </Button>
