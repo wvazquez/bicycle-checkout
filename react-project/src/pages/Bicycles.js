@@ -9,7 +9,7 @@ const Bicycles = ()=> (
                 let price = formatMoney(product.price);
                 if(product_type === 'bike'){
                     return (
-                        <ProductCard price={price} name={name} key={id} image={image}/>
+                        <ProductCard price={price} name={name} key={id} id={id} image={image}/>
                     );
                 }
             })
