@@ -1,35 +1,3 @@
-// import React, {Component} from 'react';
-// import './style.css'
-
-
-// class SideCart extends Component{
-//     state = {
-//         isShowing : true,
-//         products: []
-//     }
-
-//     toggleShow = () => {
-//         this.setState({ isShowing : !this.state.isShowing});
-//     }
-//     render(){
-//         if(this.state.isShowing){
-//             return (
-//                 <div className="sidecart-container">
-//                     <h1>Shopping Cart</h1>
-//                 </div>      
-//             );
-//         }else{
-//             return null;
-//         }
-        
-//     }
-
-// }
-
-// export default SideCart;
-
-
-
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
@@ -42,6 +10,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 
+import SideCartItem from '../SideCartItem';
+
 const useStyles = makeStyles({
   list: {
     width: 250,
@@ -51,12 +21,11 @@ const useStyles = makeStyles({
   },
 });
 
+
+
 export default function SwipeableTemporaryDrawer() {
   const classes = useStyles();
   const [state, setState] = React.useState({
-    top: false,
-    left: false,
-    bottom: false,
     right: false,
   });
 
@@ -79,11 +48,8 @@ export default function SwipeableTemporaryDrawer() {
     <Divider />
       <List>
         
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
+        {['Inbox', 'Starred'].map((text, index) => (
+          <SideCartItem index={index} text={text}/>
         ))}
       </List>
       <Divider />
