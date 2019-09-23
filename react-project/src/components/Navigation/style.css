@@ -1,0 +1,51 @@
+.appbar{
+    background-color: white !important;
+}
+
+.appbar-title{
+    color: #007bff
+}
+
+.grow{
+    flex-grow: 1;
+  }
+  .menuButton {
+    margin-right: 8px;
+  }
+  .button{
+    margin: 4px;
+  }
+  .input {
+    display: none;
+  }
+  
+  .inputRoot{
+    color: inherit;
+  }
+  .inputInput {
+    padding: 4px 4px 4px 32px;
+    transition: width;
+    width: 100%;
+  }
+
+
+  .sectionDesktop {
+    display: none;
+  }
+  .sectionMobile{
+    display: 'flex';
+  }
+
+
+  @media(min-width: 600px){
+    .inputInput {
+        width: 200px;
+    }
+    .sectionDesktop{
+        display: flex;
+    }
+    .sectionMobile{
+        display: none;
+    }
+    
+  }
