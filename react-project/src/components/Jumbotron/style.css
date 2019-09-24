@@ -16,23 +16,19 @@
     justify-content: center;
     align-items: center;
     color: var(--mainWhite);
-  }
+}
 
-  .banner {
-    color: var(--mainWhite);
-    margin-top: -4rem;
-  }
-  .banner-title {
+.jumbotron-title {
     color: var(--mainPink);
     font-size: 4rem;
-  }
-  .banner-link {
+}
+.jumbotron-link {
     font-size: 1.5rem;
     color: var(--mainWhite);
     border: 0.2rem solid var(--mainWhite);
-  }
-  .banner-link:hover {
+}
+.jumbotron-link:hover {
     background: var(--mainBlack);
     color: var(--mainPink);
     border: 0.2rem solid var(--mainBlack);
-  }
+}

@@ -15,31 +15,22 @@ import './style.css';
 export default function ProductCard(props) {
 
   return (
-    <Card className='product-card'>
-      <CardActionArea>
-        <CardMedia
-          className='product-card-image'
-          image={props.image}
-          title={props.name}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-           {props.name}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Link size="small" color="primary" to={`/bicycles/${props.id}`}>
-          Learn More
+    <Link to='/bicycles/1' className="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item sweets" data-item="sweets">
+          <div className="card">
+            <div className="img-container">
+              <img src={props.image} className="card-img-top store-img" alt=""/>
+              <span className="store-item-icon">
+                <i className="fas fa-shopping-cart"></i>
+              </span>
+            </div>
+            <div className="card-body">
+              <div className="card-text d-flex justify-content-between text-capitalize">
+                <h5 id="store-item-name">mountain bike</h5>
+                <h5 className="store-item-value">$ <strong id="store-item-price" className="font-weight-bold">5</strong></h5>
+
+              </div>
+            </div>
+          </div>
         </Link>
-        <Button size="small" color="primary">
-          Add to cart
-        </Button>
-      </CardActions>
-    </Card>
   );
 }
