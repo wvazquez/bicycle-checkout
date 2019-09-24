@@ -1,8 +1,10 @@
 import React from "react";
 import ProductCard from "../components/ProductCard";
+import Jumbotron from '../components/Jumbotron';
 import {products} from '../data/bikerentals.json';
 const Bicycles = ()=> (
     <>
+        <Jumbotron/>
         {
             products.map(product => {
                 let {id,name,image,product_type} = product;

@@ -1,0 +1,38 @@
+:root {
+    --mainPink: #ef7998;
+    --mainYellow: rgb(249, 228, 148);
+    --mainWhite: #fff;
+    --mainBlack: #000;
+    --yellowTrans: rgba(249, 228, 148, 0.5);
+    --mainGrey: rgb(238, 238, 238);
+  }
+.jumbotron-bicycle {
+    min-height: calc(100vh - 76px);
+    background: linear-gradient(var(--yellowTrans), var(--yellowTrans)),
+      url("/backgrounds/background-bicycle.jpg") center/cover fixed no-repeat;
+    position: relative;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: var(--mainWhite);
+  }
+
+  .banner {
+    color: var(--mainWhite);
+    margin-top: -4rem;
+  }
+  .banner-title {
+    color: var(--mainPink);
+    font-size: 4rem;
+  }
+  .banner-link {
+    font-size: 1.5rem;
+    color: var(--mainWhite);
+    border: 0.2rem solid var(--mainWhite);
+  }
+  .banner-link:hover {
+    background: var(--mainBlack);
+    color: var(--mainPink);
+    border: 0.2rem solid var(--mainBlack);
+  }
