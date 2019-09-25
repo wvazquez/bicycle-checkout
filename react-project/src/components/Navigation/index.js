@@ -75,6 +75,8 @@ class Navigation extends Component{
         };
 
       render(){
+        console.log('total: ', this.props.totalQuantity);
+        const total = this.props.totalQuantity;
         return (
         
         <div className="grow">
@@ -96,7 +98,7 @@ class Navigation extends Component{
                   aria-controls='shopping-cart'
                   aria-haspopup="true"
                   onClick={this.handleShoppingCartOpen}>
-                    <Badge badgeContent={4} color="secondary">
+                    <Badge badgeContent={total} color="secondary">
                       <ShoppingCart color='primary'/>
                     </Badge>
                   </IconButton>
