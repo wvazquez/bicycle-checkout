@@ -39,3 +39,8 @@
   .store-item-value {
     color: --mainYellow;
   }
+
+  .banner-title {
+    color: var(--mainPink);
+    font-size: 4rem;
+  }
