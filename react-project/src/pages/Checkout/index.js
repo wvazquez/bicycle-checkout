@@ -11,7 +11,9 @@ import Typography from '@material-ui/core/Typography';
 import BillingForm from '../../components/BillingForm';
 import OrderForm from '../../components/OrderForm';
 import CouponForm from '../../components/CouponForm';
+import DevileryForm from '../../components/DeliveryForm';
 import './style.css'
+import DeliveryForm from '../../components/DeliveryForm';
 
 
 class Checkout extends Component {
@@ -24,7 +26,7 @@ class Checkout extends Component {
                 isCompleted: false,
             },
             {
-                title: 'Payment Selection',
+                title: 'Devilery Info',
                 active: false,
                 isCompleted: false,
             },
@@ -48,7 +50,7 @@ class Checkout extends Component {
             case 1:
                 return (
                     <div className='row justify-content-center'>
-                        <BillingForm />
+                        <DeliveryForm />
                         <OrderForm />
                     </div>
                 )
@@ -115,7 +117,7 @@ class Checkout extends Component {
     render() {
 
         return (
-            <div className='root'>
+            <div>
                 <Stepper activeStep={this.state.activeStep}>
                     {this.renderSteps()}
                 </Stepper>
