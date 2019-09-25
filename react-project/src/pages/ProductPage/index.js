@@ -8,7 +8,6 @@ import './style.css';
 
 class ProductPage extends Component {
 
-
     state = {
         id: 1,
         name: '',
@@ -16,6 +15,7 @@ class ProductPage extends Component {
         image: '',
         quantity: 1,
     }
+
     handleQuantity = (event) => {
         const action = event.currentTarget.getAttribute('name');
         if(action === 'decrease'){
@@ -28,7 +28,6 @@ class ProductPage extends Component {
         }
     }
     checkQuantity = () => {
-        
         if (this.state.quantity > 0) {
             return true
         }
@@ -41,16 +40,17 @@ class ProductPage extends Component {
                 return element;
             }
         });
-        this.setState({ name, price, image });
+        this.setState({ id, name, price, image });
+    }
+
+    handleAddToCart = ()=>{
+        this.props.addToCart(this.state, this.state.quantity)
+        this.setState({ quantity: 1});
     }
 
     render() {
-        
-
         return (
             <div>
-
-
                 <div className="site-section mt-5">
                     <div className="container">
                         <div className="row">
@@ -58,12 +58,12 @@ class ProductPage extends Component {
                                 <img className="d-block w-100" src="/bicycles/beachcruiserbike.jpeg" alt="First slide" />
                             </div>
                             <div className="col-lg-5 ml-auto">
-                                <h2 className="text-primary">Bike Details</h2>
+                                <h2 className="text-primary">{this.state.name} - {this.state.price}</h2>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non eos inventore aspernatur voluptatibus ratione odit molestias molestiae, illum et impedit veniam modi sunt quas nam mollitia earum perferendis, dolorem. Magni.</p>
 
                                 <QuantityControls handleQuantity={this.handleQuantity} quantity={this.state.quantity}/>
 
-                                <p><span className="buy-now btn btn-sm height-auto px-4 py-3 btn-primary" onClick={() => this.props.addToCart(this.state)}>Add To Cart</span></p>
+                                <p><span className="buy-now btn btn-sm height-auto px-4 py-3 btn-primary" onClick={() => this.handleAddToCart()}>Add To Cart</span></p>
                             </div>
                         </div>
                     </div>

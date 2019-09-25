@@ -36,7 +36,9 @@
     display: 'flex';
   }
 
-
+  .sideCartList{
+    width: 250px;
+  }
   @media(min-width: 600px){
     .inputInput {
         width: 200px;
