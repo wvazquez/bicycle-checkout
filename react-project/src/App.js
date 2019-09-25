@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navigation from './components/Navigation';
 import Bicycles from './pages/Bicycles';
 import ProductPage from './pages/ProductPage';
-import Checkout from './components/Checkout';
+import Checkout from './pages/Checkout';
 
 
 class App extends Component {
