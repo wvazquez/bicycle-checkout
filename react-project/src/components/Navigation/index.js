@@ -9,6 +9,18 @@ import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import Button from '@material-ui/core/Button';
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+import List from '@material-ui/core/List';
+import Divider from '@material-ui/core/Divider';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import MailIcon from '@material-ui/icons/Mail';
+
+import SideCartItem from '../SideCartItem';
+
+import SideCart from '../SideCart';
 
 
 import {Link} from 'react-router-dom';
@@ -24,21 +36,54 @@ class Navigation extends Component{
 
         isShoppingCartOpen: false,
         isMobileMenuOpen: false,
+        right: false
+    };
+    sideList = side => (
+      <div
+        style={{width: '250px'}}
+        role="presentation"
+        onClick={this.toggleDrawer(side, false)}
+        onKeyDown={this.toggleDrawer(side, false)}
+      >
+          <h2>Shopping Cart</h2>
+      <Divider />
+        <List>
+          
+          { this.shoppingCartItems() }
+        </List>
+
+      </div>
+    );
+    toggleDrawer = (side, open) => event => {
+      if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+        return;
+      }
+  
+      this.setState({ right: open});
     };
 
+    shoppingCartItems = ()=>{
+      if(this.props.cart.length >0 ){
+        return this.props.cart.map((cartItem) => {
+          return (<>
+          <SideCartItem index={cartItem.id} text={cartItem.title}/>
+          <Divider />
+          </>)
+        }
+        )
+      }
+      return null
+    }
+
     renderShoppingCart = ()=> (
-        <Menu
-          anchorEl={this.state.shoppingCartElement}
-          anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-          id='shopping-cart'
-          keepMounted
-          transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-          open={this.state.isShoppingCartOpen}
-          onClose={this.handleMenuClose}
-        >
-          <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
-          <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
-        </Menu>
+        <SwipeableDrawer
+        anchor="right"
+        open={this.state.right}
+        onClose={this.toggleDrawer('right', false)}
+        onOpen={this.toggleDrawer('right', true)}
+      >
+        {this.sideList('right')}
+      </SwipeableDrawer>
       );
 
     renderMobileMenu = ()=> (
@@ -54,6 +99,7 @@ class Navigation extends Component{
             <Link to='/'><MenuItem>Home</MenuItem></Link> 
             <Link to='/bicycles'><MenuItem>Store</MenuItem></Link>
         </Menu>
+        
       );
 
         handleMobileMenuOpen = (event) => {
@@ -62,9 +108,7 @@ class Navigation extends Component{
                 isMobileMenuOpen : !this.state.isMobileMenuOpen
             });
         }
-        handleShoppingCartOpen = (event) => {
-            this.setState({shoppingCartElement : event.currentTarget, isShoppingCartOpen: !this.state.isShoppingCartOpen});
-        }
+
         handleMenuClose = () => {
             this.setState({
                 mobileMenuElement : null,
@@ -97,7 +141,7 @@ class Navigation extends Component{
                   edge="end"
                   aria-controls='shopping-cart'
                   aria-haspopup="true"
-                  onClick={this.handleShoppingCartOpen}>
+                  onClick={this.toggleDrawer('right', true)}>
                     <Badge badgeContent={total} color="secondary">
                       <ShoppingCart color='primary'/>
                     </Badge>

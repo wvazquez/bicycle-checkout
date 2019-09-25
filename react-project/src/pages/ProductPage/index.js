@@ -10,6 +10,7 @@ class ProductPage extends Component {
 
 
     state = {
+        id: 1,
         name: '',
         price: '',
         image: '',
@@ -48,11 +49,7 @@ class ProductPage extends Component {
 
         return (
             <div>
-                
-                <img src={this.state.image} alt={this.state.name} />
-                <p>{this.state.name}</p>
-                <p>{this.state.price}</p>
-                
+
 
                 <div className="site-section mt-5">
                     <div className="container">
