@@ -1,9 +1,10 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
+import './style.css';
 
 
 const OrderForm = (props) => (
-    <div className="row mb-5">
+    <div className="mb-5 orderform-container">
         <div className="col-md-12">
             <h2 className="h3 mb-3 text-black font-heading-serif">Your Order</h2>
             <div className="p-3 p-lg-5 border">
