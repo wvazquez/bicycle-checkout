@@ -1,6 +1,8 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
 
-const OrderForm = () => (
+
+const OrderForm = (props) => (
     <div className="row mb-5">
         <div className="col-md-12">
             <h2 className="h3 mb-3 text-black font-heading-serif">Your Order</h2>
@@ -8,8 +10,8 @@ const OrderForm = () => (
                 <table className="table site-block-order-table mb-5">
                     <thead>
                         <tr>
-                        <td>Product</td>
-                        <td>Total</td>
+                            <td>Product</td>
+                            <td>Total</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -32,45 +34,18 @@ const OrderForm = () => (
                     </tbody>
                 </table>
 
-                <div className="border mb-3 p-3 rounded">
-                    <h3 className="h6 mb-0"><a className="d-block" data-toggle="collapse" href="#collapsebank" role="button"
-                        aria-expanded="false" aria-controls="collapsebank">Direct Bank Transfer</a></h3>
-
-                    <div className="collapse" id="collapsebank">
-                        <div className="py-2 pl-0">
-                            <p className="mb-0">Make your payment directly into our bank account. Please use your Order ID as the
-                          payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="border mb-3 p-3 rounded">
-                    <h3 className="h6 mb-0"><a className="d-block" data-toggle="collapse" href="#collapsecheque" role="button"
-                        aria-expanded="false" aria-controls="collapsecheque">Cheque Payment</a></h3>
-
-                    <div className="collapse" id="collapsecheque">
-                        <div className="py-2 pl-0">
-                            <p className="mb-0">Make your payment directly into our bank account. Please use your Order ID as the
-                          payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="border mb-5 p-3">
-                    <h3 className="h6 mb-0"><a className="d-block" data-toggle="collapse" href="#collapsepaypal" role="button"
-                        aria-expanded="false" aria-controls="collapsepaypal">Paypal</a></h3>
-
-                    <div className="collapse" id="collapsepaypal">
-                        <div className="py-2 pl-0">
-                            <p className="mb-0">Make your payment directly into our bank account. Please use your Order ID as the
-                          payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="form-group">
-                    <button className="btn btn-primary btn-lg btn-block" >Place
-                      Order</button>
+                <div className="text-center">
+                    <Button disabled={props.activeStep === 0} onClick={props.handleBack} className='button'>
+                    {props.activeStep === props.stepLength - 1 ? 'Edit' : 'Back'}
+                        </Button>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={props.handleNext}
+                        className='button ml-3'
+                    >
+                        {props.activeStep === props.stepLength - 1 ? 'Finish' : 'Next'}
+                    </Button>
                 </div>
 
             </div>

@@ -10,7 +10,6 @@ import Typography from '@material-ui/core/Typography';
 
 import BillingForm from '../../components/BillingForm';
 import OrderForm from '../../components/OrderForm';
-import CouponForm from '../../components/CouponForm';
 import './style.css'
 import DeliveryForm from '../../components/DeliveryForm';
 import CreditCardForm from '../../components/CreditCardForm';
@@ -44,22 +43,21 @@ class Checkout extends Component {
                 return (
                     <div className='row justify-content-center'>
                         <BillingForm />
-                        <OrderForm />
+                        <OrderForm activeStep={this.state.activeStep} handleBack={this.handleBack} handleNext={this.handleNext} stepLength={this.state.steps.length}/>
                     </div>
                 )
             case 1:
                 return (
                     <div className='row justify-content-center'>
                         <DeliveryForm />
-                        <OrderForm />
+                        <OrderForm activeStep={this.state.activeStep} handleBack={this.handleBack} handleNext={this.handleNext} stepLength={this.state.steps.length}/>
                     </div>
                 )
             case 2:
                 return (
                     <div className='row justify-content-center'>
                         <CreditCardForm />
-                        <CouponForm />
-                        
+                        <OrderForm activeStep={this.state.activeStep} handleBack={this.handleBack} handleNext={this.handleNext} stepLength={this.state.steps.length}/>
                     </div>
                 );
             default:
@@ -103,19 +101,6 @@ class Checkout extends Component {
             <div className="site-section">
                 <div className="container">
                     {this.getStepContent(this.state.activeStep)}
-                    <div>
-                        <Button disabled={this.state.activeStep === 0} onClick={this.handleBack} className='button'>
-                            Back
-                        </Button>
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            onClick={this.handleNext}
-                            className='button'
-                        >
-                            {this.state.activeStep === this.state.steps.length - 1 ? 'Finish' : 'Next'}
-                        </Button>
-                    </div>
                 </div>
 
             </div>
