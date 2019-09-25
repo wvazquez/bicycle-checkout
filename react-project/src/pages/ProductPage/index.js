@@ -55,7 +55,7 @@ class ProductPage extends Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-6">
-                                <img className="d-block w-100" src="/bicycles/beachcruiserbike.jpeg" alt="First slide" />
+                                <img className="d-block w-100" src={this.state.image} alt={this.state.name} />
                             </div>
                             <div className="col-lg-5 ml-auto">
                                 <h2 className="text-primary">{this.state.name} - {this.state.price}</h2>

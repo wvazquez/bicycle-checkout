@@ -108,15 +108,16 @@ class Navigation extends Component {
       <div className="grow">
         <AppBar position="static" className='appbar'>
           <Toolbar>
-
-            <Typography className="appbar-title" variant="h6" noWrap>
-              Bicycle Rental
-            </Typography>
+            <Link to='/'>
+              <Typography className="appbar-title" variant="h6" noWrap>
+                Bicycle Rental
+              </Typography>
+            </Link>
 
             <div className="grow" />
             <div className="sectionDesktop">
               <Link to='/'> <Button className="button">Home</Button></Link>
-              <Link to='/store'> <Button className="button">Store</Button></Link>
+              <Link to='/checkout'> <Button className="button">Checkout</Button></Link>
 
             </div>
             <IconButton aria-label="show 4 new items in shopping cart" color="inherit"

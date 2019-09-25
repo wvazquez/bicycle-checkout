@@ -93,7 +93,7 @@ export default function SwipeableTemporaryDrawer() {
 
   return (
     <div>
-      <Button onClick={toggleDrawer('right', true)}>Open Right</Button>
+      {/* <Button onClick={toggleDrawer('right', true)}>Open Right</Button> */}
 
       
       <SwipeableDrawer

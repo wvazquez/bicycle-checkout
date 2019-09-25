@@ -6,7 +6,6 @@ import Navigation from './components/Navigation';
 import Bicycles from './pages/Bicycles';
 import ProductPage from './pages/ProductPage';
 import Checkout from './components/Checkout';
-import SideCart from './components/SideCart';
 
 
 class App extends Component {
@@ -33,7 +32,6 @@ class App extends Component {
           <Route exact path='/bicycles/:id' render={(props) => <ProductPage {...props} addToCart={this.addToCart}/>} />
           <Route exact path='/checkout' component={Checkout}/>
         </Switch>
-        <SideCart/>
       </Router>
       
     );

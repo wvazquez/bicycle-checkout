@@ -7,17 +7,7 @@ const Bicycles = ()=> (
     <>
         <Jumbotron/>
         <ProductStore/>
-        {/* {
-            products.map(product => {
-                let {id,name,image,product_type} = product;
-                let price = formatMoney(product.price);
-                if(product_type === 'bike'){
-                    return (
-                        <ProductCard price={price} name={name} key={id} id={id} image={image}/>
-                    );
-                }
-            })
-        } */}
+        
         
 
 </>

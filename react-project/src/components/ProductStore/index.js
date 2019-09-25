@@ -1,10 +1,20 @@
 import React from 'react';
 
 import ProductCard from '../ProductCard';
+import {products} from '../../data/bikerentals.json';
+
 import './style.css';
 
-const ProductStore = () => (
-
+const ProductStore = () => {
+  const placeholderImages = [
+    '/bicycles/mountainbike.jpg',
+    "/bicycles/roadbike.jpg",
+    "/bicycles/tandembike.jpg",
+    "/bicycles/kidsbike.jpg",
+    "/bicycles/hybridbike.jpg",
+    "/bicycles/beachcruiserbike.jpeg"
+  ];
+  return (
   <div id="store" className="store py-5">
     <div className="container">
       <div className="row">
@@ -12,17 +22,29 @@ const ProductStore = () => (
           <h1 className="text-capitalize">Bicycle <strong className="banner-title ">Rentals</strong></h1>
         </div>
       </div>
-
       <div className="store-items row" id="store-items">
-          <ProductCard image="/bicycles/mountainbike.jpg" />
+      {
+            products.map((product, index) => {
+              console.log()
+                let {id,name,image,product_type, price} = product;
+                // let price = formatMoney(product.price);
+                if(product_type === 'bike'){
+                    return (
+                        <ProductCard price={price} name={name} key={id} id={id} image={placeholderImages[index]}/>
+                    );
+                }
+            })
+        }
+      </div>
+          {/* <ProductCard image="/bicycles/mountainbike.jpg" />
           <ProductCard image="/bicycles/roadbike.jpg" />
           <ProductCard image="/bicycles/tandembike.jpg" />
           <ProductCard image="/bicycles/kidsbike.jpg" />
           <ProductCard image="/bicycles/hybridbike.jpg" />
-          <ProductCard image="/bicycles/beachcruiserbike.jpeg" />
-        </div>
+          <ProductCard image="/bicycles/beachcruiserbike.jpeg" /> */}
+        
     </div>
   </div>
-);
+)};
 
 export default ProductStore;
