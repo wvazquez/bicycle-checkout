@@ -85,11 +85,13 @@ class DeliveryForm extends Component {
       <div className="col-md-6 mb-5 mb-md-0">
         <h2 className="h3 mb-3 text-black font-heading-serif">Delivery Details</h2>
         <div className="p-3 p-lg-5 border">
-
-          <div className="form-group">
-            <label htmlFor="c_ship_different_address" className="text-black" data-toggle="collapse"
+          <span className='delivery-option-subheading'>John Smith</span>
+          <span className='delivery-option-subheading'>123 Real Street Apt 1A</span>
+          <span className='delivery-option-subheading'>New York, New York, United States</span>
+          <div className="form-group mt-3">
+            <label htmlFor="c_ship_different_address" className="text-black mr-1" data-toggle="collapse"
               href="#ship_different_address" role="button" aria-expanded="false"
-              aria-controls="ship_different_address"><input onClick={this.toggleForm} type="checkbox" value="1" id="c_ship_different_address" />
+              aria-controls="ship_different_address"><input onClick={this.toggleForm} className='mr-1'type="checkbox" value="1" id="c_ship_different_address" />
               Ship To A Different Address?</label>
             {
               this.state.showForm ? this.form() : null
@@ -104,7 +106,7 @@ class DeliveryForm extends Component {
             <div className="card mr-3" >
               <div className="card-body">
                 <div className="custom-control custom-radio">
-                <input type="radio" id="customRadioInline1" name="customRadioInline1" className="custom-control-input" />
+                <input type="radio" checked id="customRadioInline1" name="customRadioInline1" className="custom-control-input" />
                 <label className="custom-control-label" htmlFor="customRadioInline1">Standard Delivery - </label>
                 <p className='delivery-option-title'> FREE</p>
                 <p className='delivery-option-subheading'>Estimated 7-20 Day Shipping</p>

@@ -11,9 +11,9 @@ import Typography from '@material-ui/core/Typography';
 import BillingForm from '../../components/BillingForm';
 import OrderForm from '../../components/OrderForm';
 import CouponForm from '../../components/CouponForm';
-import DevileryForm from '../../components/DeliveryForm';
 import './style.css'
 import DeliveryForm from '../../components/DeliveryForm';
+import CreditCardForm from '../../components/CreditCardForm';
 
 
 class Checkout extends Component {
@@ -55,7 +55,13 @@ class Checkout extends Component {
                     </div>
                 )
             case 2:
-                return (<CouponForm />);
+                return (
+                    <div className='row justify-content-center'>
+                        <CreditCardForm />
+                        <CouponForm />
+                        
+                    </div>
+                );
             default:
                 return 'Unknown step';
         }
