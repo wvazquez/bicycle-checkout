@@ -17,12 +17,33 @@ class App extends Component {
   formatMoney = (number) => number.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
 
   addToCart = (item, quantity) =>{
-    console.log(this.state.cart)
+    
+
     this.setState(
-      prevState => ({
-        cart: [...prevState.cart, item],
-        quantity: prevState.quantity + quantity
-      }));
+      prevState => {
+        
+
+        let existingProduct = prevState.cart.find((cartItem) => cartItem.id === item.id);
+        
+        if(existingProduct){
+          let newCart = prevState.cart.filter(cartItem => cartItem.id !== item.id );
+          let newQuantity = existingProduct.quantity += quantity;
+          existingProduct.quantity = newQuantity;
+          return ({
+            cart: [...newCart, existingProduct],
+            quantity: prevState.quantity + quantity
+          })
+        }else{
+
+          return ({
+            cart: [...prevState.cart, item],
+            quantity: prevState.quantity + quantity
+          })
+        }
+      
+      
+    
+    });
   }
 
   render(){
