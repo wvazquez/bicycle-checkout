@@ -6,14 +6,14 @@ import {products} from '../../data/bikerentals.json';
 import './style.css';
 
 const ProductStore = () => {
-  const placeholderImages = [
-    '/bicycles/mountainbike.jpg',
-    "/bicycles/roadbike.jpg",
-    "/bicycles/tandembike.jpg",
-    "/bicycles/kidsbike.jpg",
-    "/bicycles/hybridbike.jpg",
-    "/bicycles/beachcruiserbike.jpeg"
-  ];
+  // const placeholderImages = [
+  //   '/bicycles/mountainbike.jpg',
+  //   "/bicycles/roadbike.jpg",
+  //   "/bicycles/tandembike.jpg",
+  //   "/bicycles/kidsbike.jpg",
+  //   "/bicycles/hybridbike.jpg",
+  //   "/bicycles/beachcruiserbike.jpeg"
+  // ];
   return (
   <div id="store" className="store py-5">
     <div className="container">
@@ -29,7 +29,7 @@ const ProductStore = () => {
                 let {id,name,image,product_type, price} = product;
                 if(product_type === 'bike'){
                     return (
-                        <ProductCard price={price} name={name} key={id} id={id} image={placeholderImages[index]}/>
+                        <ProductCard price={price} name={name} key={id} id={id} image={image}/>
                     );
                 }
             })
