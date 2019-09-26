@@ -19,7 +19,7 @@ export default function ProductCard(props) {
                 <ZoomIcon/>
               </span>
             </div>
-            <div className="card-body">
+            <div className="card-body card-body-product">
               <div className="card-text text-center text-capitalize">
                 <h5 id="store-item-name">{props.name}</h5>
                 <h5 className="store-item-value"><strong id="store-item-price" className="font-weight-bold">{formatMoney(props.price)}</strong></h5>

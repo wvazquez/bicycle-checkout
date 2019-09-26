@@ -43,7 +43,7 @@
     color: var(--mainPink);
     font-size: 4rem;
   }
-  .card-body{
+  .card-body-product{
     display: flex;
     justify-content: center;
     align-items: flex-end;

@@ -61,7 +61,7 @@ const OrderForm = (props) => {
 
                 <div className="text-center">
                     <Button disabled={props.activeStep === 0} onClick={props.handleBack} className='button'>
-                    {props.activeStep === props.stepLength - 1 ? 'Edit' : 'Back'}
+                    {props.activeStep === props.stepLength - 1 ? 'Edit Order' : 'Back'}
                         </Button>
                     <Button
                         variant="contained"
@@ -69,7 +69,7 @@ const OrderForm = (props) => {
                         onClick={props.handleNext}
                         className='button ml-3'
                     >
-                        {props.activeStep === props.stepLength - 1 ? 'Finish' : 'Next'}
+                        {props.activeStep === props.stepLength - 1 ? 'Complete Purchase' : 'Next'}
                     </Button>
                 </div>
 

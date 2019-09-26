@@ -67,33 +67,8 @@ class CheckoutOverview extends Component {
               })
             }
         </div>
-        <h2 className="h3 mb-3 text-black font-heading-serif mt-5">Shipping Method</h2>
-        <div className="form-group form-check-inline delivery-options-container ">
-
-          <div className="card mr-3" >
-            <div className="card-body">
-              <div className="custom-control custom-radio">
-                <input type="radio" checked id="customRadioInline1" name="customRadioInline1" className="custom-control-input" />
-                <label className="custom-control-label" htmlFor="customRadioInline1">Standard Delivery - </label>
-                <p className='delivery-option-title'> FREE</p>
-                <p className='delivery-option-subheading'>Estimated 7-20 Day Shipping</p>
-                <p className='delivery-option-subheading'>Weekends and Holidays may delay delivery times</p>
-              </div>
-            </div>
-          </div>
-          <div className="card" >
-            <div className="card-body">
-              <div className="custom-control custom-radio">
-                <input type="radio" id="customRadioInline2" name="customRadioInline1" className="custom-control-input" />
-                <label className="custom-control-label" htmlFor="customRadioInline2">Express Delivery - </label>
-                <p className='delivery-option-title'> $8.99</p>
-                <p className='delivery-option-subheading'>Estimated 2-3 Day Shipping</p>
-                <p className='delivery-option-subheading'>Weekends and Holidays may delay delivery times</p>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
+        
 
     );
   };

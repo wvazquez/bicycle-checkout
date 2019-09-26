@@ -10,7 +10,8 @@ import OrderForm from '../../components/OrderForm';
 import DeliveryForm from '../../components/DeliveryForm';
 import CreditCardForm from '../../components/CreditCardForm';
 import ProductStore from '../../components/ProductStore';
-import CheckoutOverview from '../../components/CheckoutOverview'
+import CheckoutOverview from '../../components/CheckoutOverview';
+import {Link} from "react-router-dom";
 import './style.css'
 
 
@@ -61,7 +62,7 @@ class Checkout extends Component {
                     </div>
                 );
             default:
-                return 'Unknown step';
+                return 'There was an error with your order';
         }
     }
     handleBack = () => {
@@ -87,13 +88,19 @@ class Checkout extends Component {
         })
     );
     renderReset = () => (
-        <div>
+        <div className="text-center">
             <Typography className='instructions'>
-                All steps completed - you&apos;re finished
+                Youre Order was been Completed!
             </Typography>
-            <Button onClick={this.handleReset} className='button'>
-                Reset
-            </Button>
+            <Link to='/'>
+            <Button
+                        variant="contained"
+                        color="primary"
+                        className='button ml-3'
+                    >View More items</Button>
+                
+            
+            </Link>
         </div>
     );
 

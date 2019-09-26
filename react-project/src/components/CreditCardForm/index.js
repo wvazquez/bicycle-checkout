@@ -26,7 +26,7 @@ class PaymentForm extends Component {
                     <label htmlFor="cc-name" className="text-black">Name:<span className="text-danger">*</span></label>
                     <input type="text" className="form-control" id="cc-name" name="cc-name" />
                 </div>
-                <div className="col-md-3">
+                <div className="col-md-4">
                     <label htmlFor="cc-date" className="text-black">Exp. Date:<span className="text-danger">*</span></label>
                     <input type="text" className="form-control" id="cc-date" name="cc-date" />
                 </div>
