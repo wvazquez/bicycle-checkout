@@ -1,0 +1,26 @@
+.delivery-option-title{
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 700;
+}
+.delivery-option-price{
+    display: inline-block;
+    margin-left: auto;
+}
+
+.delivery-option-subheading{
+    font-size: 12px;
+    color: gray;
+    display: block;
+}
+
+.delivery-options-container{
+    margin-right: 0;
+    justify-content: space-around;
+}
+
+.input-image{
+    height: 100px;
+    width: 100px;
+    display: block;
+}

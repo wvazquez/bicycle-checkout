@@ -4,6 +4,7 @@ import './style.css';
 
 const tax = .08875;
 
+
 const calcTaxes = (price)=>{
     return price * tax;
 }
@@ -11,7 +12,7 @@ const calcTotal = (subtotal) => {
     return (subtotal * tax) + subtotal
 }
 const OrderForm = (props) => {
-    
+    console.log(props)
     let subtotal = 0;
     return (
     <div className="mb-5 orderform-container">
@@ -30,7 +31,7 @@ const OrderForm = (props) => {
                         {
                             
                             props.cart.map(cartItem => {
-                                subtotal += cartItem.price;
+                                subtotal += (cartItem.price * cartItem.quantity);
                                 return (
                                 <tr key={cartItem.id}>
                                     <td>{cartItem.name} <strong className="mx-2">x</strong> {cartItem.quantity}</td>

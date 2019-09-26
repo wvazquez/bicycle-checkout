@@ -34,9 +34,7 @@
   .img-container:hover .store-item-icon {
     transform: translate(0, 0);
   }
-  /* .store-item-icon:hover {
-    color: var(--mainWhite);
-  } */
+ 
   .store-item-value {
     color: --mainYellow;
   }

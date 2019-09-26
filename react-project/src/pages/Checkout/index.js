@@ -10,6 +10,7 @@ import OrderForm from '../../components/OrderForm';
 import DeliveryForm from '../../components/DeliveryForm';
 import CreditCardForm from '../../components/CreditCardForm';
 import ProductStore from '../../components/ProductStore';
+import CheckoutOverview from '../../components/CheckoutOverview'
 import './style.css'
 
 
@@ -18,17 +19,17 @@ class Checkout extends Component {
         activeStep: 0,
         steps: [
             {
-                title: 'Customer Info',
+                title: 'Order Details',
                 active: true,
                 isCompleted: false,
             },
             {
-                title: 'Devilery Info',
+                title: 'Customer Details',
                 active: false,
                 isCompleted: false,
             },
             {
-                title: 'Review',
+                title: 'Payment Details',
                 active: false,
                 isCompleted: false,
             },
@@ -38,19 +39,20 @@ class Checkout extends Component {
     getStepContent = (step) => {
         switch (step) {
             case 0:
-                return (
-                    <div className='row justify-content-center'>
-                        <BillingForm formatMoney={this.props.formatMoney} />
-                        <OrderForm formatMoney={this.props.formatMoney} cart={this.props.cart} activeStep={this.state.activeStep} handleBack={this.handleBack} handleNext={this.handleNext} stepLength={this.state.steps.length} />
-                    </div>
-                )
+                    return (
+                        <div className='row justify-content-center'>
+                            <CheckoutOverview formatMoney={this.props.formatMoney} addToCart={this.props.addToCart} removeFromCart={this.props.removeFromCart}/>
+                            <OrderForm formatMoney={this.props.formatMoney} cart={this.props.cart} activeStep={this.state.activeStep} handleBack={this.handleBack} handleNext={this.handleNext} stepLength={this.state.steps.length} />
+                        </div>
+                    )
+                
             case 1:
-                return (
-                    <div className='row justify-content-center'>
-                        <DeliveryForm formatMoney={this.props.formatMoney} />
-                        <OrderForm formatMoney={this.props.formatMoney} cart={this.props.cart} activeStep={this.state.activeStep} handleBack={this.handleBack} handleNext={this.handleNext} stepLength={this.state.steps.length} />
-                    </div>
-                )
+                    return (
+                        <div className='row justify-content-center'>
+                            <BillingForm formatMoney={this.props.formatMoney} />
+                            <OrderForm formatMoney={this.props.formatMoney} cart={this.props.cart} activeStep={this.state.activeStep} handleBack={this.handleBack} handleNext={this.handleNext} stepLength={this.state.steps.length} />
+                        </div>
+                    )
             case 2:
                 return (
                     <div className='row justify-content-center'>

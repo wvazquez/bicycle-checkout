@@ -17,8 +17,8 @@ class App extends Component {
   formatMoney = (number) => number.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
 
   addToCart = (item, quantity) =>{
-    
-
+    console.log(item)
+    console.log(quantity);
     this.setState(
       prevState => {
         
@@ -34,16 +34,28 @@ class App extends Component {
             quantity: prevState.quantity + quantity
           })
         }else{
-
           return ({
             cart: [...prevState.cart, item],
             quantity: prevState.quantity + quantity
           })
-        }
-      
-      
-    
+        }  
     });
+  }
+  removeFromCart = (key)=> {
+    this.setState(prevState => {
+      let productToRemove = prevState.cart.find((cartItem) => cartItem.id === key);
+      if(productToRemove){
+        let newCart = prevState.cart.filter(cartItem => cartItem.id !== key );
+        return ({
+          cart : [...newCart],
+          quantity: prevState.quantity - productToRemove.quantity
+        });
+
+      }
+    });
+  }
+  reduceFromCart= ()=> {
+
   }
 
   render(){
@@ -53,7 +65,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={Bicycles}/>
           <Route exact path='/bicycles/:id' render={(props) => <ProductPage {...props} formatMoney={this.formatMoney} addToCart={this.addToCart}/>} />
-          <Route exact path='/checkout' render={() => <Checkout cart={this.state.cart} formatMoney={this.formatMoney}/>}/>
+          <Route exact path='/checkout' render={() => <Checkout cart={this.state.cart} formatMoney={this.formatMoney} addToCart={this.addToCart} removeFromCart={this.removeFromCart}/> }/>
         </Switch>
       </Router>
       
