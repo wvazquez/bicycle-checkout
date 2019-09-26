@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/bicycle-checkout/static/css/main.08051335.chunk.css",
+    "main.js": "/bicycle-checkout/static/js/main.0d1a5a43.chunk.js",
+    "main.js.map": "/bicycle-checkout/static/js/main.0d1a5a43.chunk.js.map",
+    "runtime-main.js": "/bicycle-checkout/static/js/runtime-main.b00e8853.js",
+    "runtime-main.js.map": "/bicycle-checkout/static/js/runtime-main.b00e8853.js.map",
+    "static/js/2.c996d6a9.chunk.js": "/bicycle-checkout/static/js/2.c996d6a9.chunk.js",
+    "static/js/2.c996d6a9.chunk.js.map": "/bicycle-checkout/static/js/2.c996d6a9.chunk.js.map",
+    "index.html": "/bicycle-checkout/index.html",
+    "precache-manifest.7d1982edbbca3ae2dc546056fdb71101.js": "/bicycle-checkout/precache-manifest.7d1982edbbca3ae2dc546056fdb71101.js",
+    "service-worker.js": "/bicycle-checkout/service-worker.js",
+    "static/css/main.08051335.chunk.css.map": "/bicycle-checkout/static/css/main.08051335.chunk.css.map"
+  }
+}
