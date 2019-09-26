@@ -27,7 +27,6 @@ const ProductStore = () => {
             products.map((product, index) => {
               console.log()
                 let {id,name,image,product_type, price} = product;
-                // let price = formatMoney(product.price);
                 if(product_type === 'bike'){
                     return (
                         <ProductCard price={price} name={name} key={id} id={id} image={placeholderImages[index]}/>
@@ -36,13 +35,6 @@ const ProductStore = () => {
             })
         }
       </div>
-          {/* <ProductCard image="/bicycles/mountainbike.jpg" />
-          <ProductCard image="/bicycles/roadbike.jpg" />
-          <ProductCard image="/bicycles/tandembike.jpg" />
-          <ProductCard image="/bicycles/kidsbike.jpg" />
-          <ProductCard image="/bicycles/hybridbike.jpg" />
-          <ProductCard image="/bicycles/beachcruiserbike.jpeg" /> */}
-        
     </div>
   </div>
 )};

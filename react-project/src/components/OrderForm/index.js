@@ -2,8 +2,18 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import './style.css';
 
+const tax = .08875;
 
-const OrderForm = (props) => (
+const calcTaxes = (price)=>{
+    return price * tax;
+}
+const calcTotal = (subtotal) => { 
+    return (subtotal * tax) + subtotal
+}
+const OrderForm = (props) => {
+    
+    let subtotal = 0;
+    return (
     <div className="mb-5 orderform-container">
         <div className="col-md-12">
             <h2 className="h3 mb-3 text-black font-heading-serif">Your Order</h2>
@@ -16,21 +26,34 @@ const OrderForm = (props) => (
                         </tr>
                     </thead>
                     <tbody>
+
+                        {
+                            
+                            props.cart.map(cartItem => {
+                                subtotal += cartItem.price;
+                                return (
+                                <tr key={cartItem.id}>
+                                    <td>{cartItem.name} <strong className="mx-2">x</strong> {cartItem.quantity}</td>
+                                    <td>{props.formatMoney(cartItem.price)}</td>
+                                </tr>)
+                            })
+                        }
+                        <tr className="seperator">
+                            <td className=""></td>
+                            <td className=""></td>
+                        </tr>
+                        
                         <tr>
-                            <td>Bioderma <strong className="mx-2">x</strong> 1</td>
-                            <td>$55.00</td>
+                            <td className="text-black">Cart Subtotal</td>
+                            <td className="text-black">{props.formatMoney(subtotal)}</td>
                         </tr>
                         <tr>
-                            <td>Ibuprofeen <strong className="mx-2">x</strong> 1</td>
-                            <td>$45.00</td>
-                        </tr>
-                        <tr>
-                            <td className="text-black font-weight-bold"><strong>Cart Subtotal</strong></td>
-                            <td className="text-black">$350.00</td>
+                            <td className="text-black">Taxes and Fees</td>
+                            <td className="text-black">{props.formatMoney(calcTaxes(subtotal))}</td>
                         </tr>
                         <tr>
                             <td className="text-black font-weight-bold"><strong>Order Total</strong></td>
-                            <td className="text-black font-weight-bold"><strong>$350.00</strong></td>
+                            <td className="text-black font-weight-bold"><strong>{props.formatMoney(calcTotal(subtotal))}</strong></td>
                         </tr>
                     </tbody>
                 </table>
@@ -52,6 +75,6 @@ const OrderForm = (props) => (
             </div>
         </div>
     </div>
-)
+)}
 
 export default OrderForm;

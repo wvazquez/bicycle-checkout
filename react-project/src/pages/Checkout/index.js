@@ -42,22 +42,22 @@ class Checkout extends Component {
             case 0:
                 return (
                     <div className='row justify-content-center'>
-                        <BillingForm />
-                        <OrderForm activeStep={this.state.activeStep} handleBack={this.handleBack} handleNext={this.handleNext} stepLength={this.state.steps.length}/>
+                        <BillingForm formatMoney={this.props.formatMoney}/>
+                        <OrderForm formatMoney={this.props.formatMoney} cart={this.props.cart} activeStep={this.state.activeStep} handleBack={this.handleBack} handleNext={this.handleNext} stepLength={this.state.steps.length}/>
                     </div>
                 )
             case 1:
                 return (
                     <div className='row justify-content-center'>
-                        <DeliveryForm />
-                        <OrderForm activeStep={this.state.activeStep} handleBack={this.handleBack} handleNext={this.handleNext} stepLength={this.state.steps.length}/>
+                        <DeliveryForm formatMoney={this.props.formatMoney}/>
+                        <OrderForm formatMoney={this.props.formatMoney} cart={this.props.cart} activeStep={this.state.activeStep} handleBack={this.handleBack} handleNext={this.handleNext} stepLength={this.state.steps.length}/>
                     </div>
                 )
             case 2:
                 return (
                     <div className='row justify-content-center'>
-                        <CreditCardForm />
-                        <OrderForm activeStep={this.state.activeStep} handleBack={this.handleBack} handleNext={this.handleNext} stepLength={this.state.steps.length}/>
+                        <CreditCardForm formatMoney={this.props.formatMoney} />
+                        <OrderForm formatMoney={this.props.formatMoney} cart={this.props.cart} activeStep={this.state.activeStep} handleBack={this.handleBack} handleNext={this.handleNext} stepLength={this.state.steps.length}/>
                     </div>
                 );
             default:
