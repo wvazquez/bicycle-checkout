@@ -17,7 +17,7 @@ import Divider from '@material-ui/core/Divider';
 import SideCartItem from '../SideCartItem';
 
 
-
+import { HashLink } from 'react-router-hash-link';
 import { Link } from 'react-router-dom';
 
 import './style.css';
@@ -82,7 +82,8 @@ class Navigation extends Component {
       onClose={this.handleMenuClose}
     >
       <Link to='/'><MenuItem>Home</MenuItem></Link>
-      <Link to='/bicycles'><MenuItem>Store</MenuItem></Link>
+      <HashLink to='/#store'><MenuItem>Rentals</MenuItem></HashLink>
+      <Link to='/checkout'><MenuItem>Checkout</MenuItem></Link>
     </Menu>
 
   );
