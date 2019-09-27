@@ -60,7 +60,7 @@ class App extends Component {
 
   render(){
     return (
-      <Router>
+      <Router basename='/'>
         <Navigation cart={this.state.cart} totalQuantity={this.state.quantity}/>
         <Switch>
           <Route exact path='/' component={Bicycles}/>
