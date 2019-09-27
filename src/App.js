@@ -58,6 +58,10 @@ class App extends Component {
 
   }
 
+  getAddOns = () =>{
+    return this.state.cart.filter(cartItem => cartItem.product_type === "accessories");
+  }
+
   render(){
     return (
       <Router >
@@ -65,7 +69,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={Bicycles}/>
           <Route exact path='/bicycles/:id' render={(props) => <ProductPage {...props} formatMoney={this.formatMoney} addToCart={this.addToCart}/>} />
-          <Route exact path='/checkout' render={() => <Checkout cart={this.state.cart} formatMoney={this.formatMoney} addToCart={this.addToCart} removeFromCart={this.removeFromCart}/> }/>
+          <Route exact path='/checkout' render={() => <Checkout cart={this.state.cart} getAddOns={this.getAddOns}formatMoney={this.formatMoney} addToCart={this.addToCart} removeFromCart={this.removeFromCart}/> }/>
         </Switch>
       </Router>
       

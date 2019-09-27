@@ -45,7 +45,7 @@ class Checkout extends Component {
             case 0:
                     return (
                         <div className='row justify-content-center'>
-                            <CheckoutOverview formatMoney={this.props.formatMoney} addToCart={this.props.addToCart} removeFromCart={this.props.removeFromCart}/>
+                            <CheckoutOverview getAddOns={this.props.getAddOns} formatMoney={this.props.formatMoney} addToCart={this.props.addToCart} removeFromCart={this.props.removeFromCart}/>
                             <OrderForm formatMoney={this.props.formatMoney} cart={this.props.cart} activeStep={this.state.activeStep} handleBack={this.handleBack} handleNext={this.handleNext} stepLength={this.state.steps.length} />
                         </div>
                     )

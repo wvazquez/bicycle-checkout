@@ -35,13 +35,16 @@ class ProductPage extends Component {
     }
 
     componentDidMount() {
-        const id = parseInt(this.props.match.params.id);
-        const { name, price, image } = products.find(element => {
-            if (element.id === id) {
-                return element;
-            }
+        this.setState((prevState,props) => {
+            const id = parseInt(props.match.params.id);
+            let { name, price, image } = products.find(element => {
+                if (element.id === id) {
+                    return element;
+                }
+            });
+
+            return ({ id: id, name:name, price:price, image:image })
         });
-        this.setState({ id, name, price, image });
     }
 
     handleAddToCart = ()=>{
