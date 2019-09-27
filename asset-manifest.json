@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/bicycle-checkout/static/css/main.08051335.chunk.css",
-    "main.js": "/bicycle-checkout/static/js/main.32878296.chunk.js",
-    "main.js.map": "/bicycle-checkout/static/js/main.32878296.chunk.js.map",
+    "main.css": "/bicycle-checkout/static/css/main.7780021c.chunk.css",
+    "main.js": "/bicycle-checkout/static/js/main.ae2f8f37.chunk.js",
+    "main.js.map": "/bicycle-checkout/static/js/main.ae2f8f37.chunk.js.map",
     "runtime-main.js": "/bicycle-checkout/static/js/runtime-main.b00e8853.js",
     "runtime-main.js.map": "/bicycle-checkout/static/js/runtime-main.b00e8853.js.map",
-    "static/js/2.f087bd3b.chunk.js": "/bicycle-checkout/static/js/2.f087bd3b.chunk.js",
-    "static/js/2.f087bd3b.chunk.js.map": "/bicycle-checkout/static/js/2.f087bd3b.chunk.js.map",
+    "static/js/2.924562c1.chunk.js": "/bicycle-checkout/static/js/2.924562c1.chunk.js",
+    "static/js/2.924562c1.chunk.js.map": "/bicycle-checkout/static/js/2.924562c1.chunk.js.map",
     "index.html": "/bicycle-checkout/index.html",
-    "precache-manifest.e19c71b66ff2a9e680895ca6aec96e43.js": "/bicycle-checkout/precache-manifest.e19c71b66ff2a9e680895ca6aec96e43.js",
+    "precache-manifest.ba469a6a94b5280a63e1bc32aa926309.js": "/bicycle-checkout/precache-manifest.ba469a6a94b5280a63e1bc32aa926309.js",
     "service-worker.js": "/bicycle-checkout/service-worker.js",
-    "static/css/main.08051335.chunk.css.map": "/bicycle-checkout/static/css/main.08051335.chunk.css.map"
+    "static/css/main.7780021c.chunk.css.map": "/bicycle-checkout/static/css/main.7780021c.chunk.css.map",
+    "static/media/style.css": "/bicycle-checkout/static/media/background-bicycle.a01801ae.jpg"
   }
 }
