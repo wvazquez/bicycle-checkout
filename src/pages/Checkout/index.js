@@ -11,7 +11,10 @@ import DeliveryForm from '../../components/DeliveryForm';
 import CreditCardForm from '../../components/CreditCardForm';
 import ProductStore from '../../components/ProductStore';
 import CheckoutOverview from '../../components/CheckoutOverview';
-import {Link} from "react-router-dom";
+
+import {Loader, Success} from "../../components/Loader";
+
+import {HashLink as Link} from "react-router-hash-link";
 import './style.css'
 
 
@@ -92,7 +95,7 @@ class Checkout extends Component {
             <Typography className='instructions'>
                 Youre Order was been Completed!
             </Typography>
-            <Link to='/'>
+            <Link to='/#store'>
             <Button
                         variant="contained"
                         color="primary"

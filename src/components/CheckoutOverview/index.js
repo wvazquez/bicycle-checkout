@@ -24,7 +24,6 @@ class CheckoutOverview extends Component {
   }
 
   handleAddOn = (product) =>{
-
     console.log(product)
     this.setState(prevState => {
       let addOn = prevState.addOns.find((addOn) => addOn.id === product.id);
@@ -67,6 +66,7 @@ class CheckoutOverview extends Component {
               })
             }
         </div>
+        
         </div>
         
 

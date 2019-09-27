@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { products } from '../../data/bikerentals.json';
 import QuantityControls from '../../components/QuantityControls';
 import Reviews from '../../components/Reviews';
-
+import {Success} from "../../components/Loader";
 import './style.css';
 
 class ProductPage extends Component {
@@ -14,6 +14,7 @@ class ProductPage extends Component {
         price: '',
         image: '',
         quantity: 1,
+        animate: false
     }
 
     handleQuantity = (event) => {
@@ -44,8 +45,10 @@ class ProductPage extends Component {
     }
 
     handleAddToCart = ()=>{
+        this.setState({animate: true});
         this.props.addToCart(this.state, this.state.quantity)
         this.setState({ quantity: 1});
+        setTimeout(()=>{ this.setState({animate: false}) }, 2500);
     }
 
     render() {
@@ -58,19 +61,22 @@ class ProductPage extends Component {
                                 <img className="d-block w-100" src={this.state.image} alt={this.state.name} />
                             </div>
                             <div className="col-lg-5 ml-auto">
-                                <h2 className="text-primary">{this.state.name} - {this.state.price}</h2>
+                                <h2 className="text-primary">{this.state.name} - {this.props.formatMoney(this.state.price)}</h2>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non eos inventore aspernatur voluptatibus ratione odit molestias molestiae, illum et impedit veniam modi sunt quas nam mollitia earum perferendis, dolorem. Magni.</p>
 
                                 <QuantityControls handleQuantity={this.handleQuantity} quantity={this.state.quantity}/>
+                                {
+                                    !this.state.animate ? 
 
-                                <p><span className="buy-now btn btn-sm height-auto px-4 py-3 btn-primary" onClick={() => this.handleAddToCart()}>Add To Cart</span></p>
+                                    <p><span onAnimationEnd={() => this.setState({ animate: false })} className="buy-now btn btn-sm height-auto px-4 py-3 btn-primary" onClick={() => this.handleAddToCart()}>Add To Cart</span></p>
+                                    :
+                                    <Success />
+                                }
+                                
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <Reviews/>
-
             </div>
         );
     }
