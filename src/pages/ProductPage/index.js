@@ -48,10 +48,15 @@ class ProductPage extends Component {
     }
 
     handleAddToCart = ()=>{
+        clearTimeout(this.timeoutID)
         this.setState({animate: true});
         this.props.addToCart(this.state, this.state.quantity)
         this.setState({ quantity: 1});
-        setTimeout(()=>{ this.setState({animate: false}) }, 2500);
+        this.timeoutID = setTimeout(()=>{ this.setState({animate: false}) }, 2500);
+    }
+
+    componentWillUnmount(){
+        clearTimeout(this.timeoutID);
     }
 
     render() {

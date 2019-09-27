@@ -4,12 +4,15 @@ import './style.css';
 
 class CheckoutOverview extends Component {
   state = {
-    addOns: this.props.getAddOns()
+    addOns: []
   }
+
   componentDidMount(){
-    this.setState({
-      addOns : this.props.getAddOns()
+    this.setState(prevState => {
+      let addOns = this.props.cart.filter(addOn => addOn.product_type === 'accessory');
+      return ({addOns : addOns});
     });
+    console.log(this.state.addOns);
   }
 
 
