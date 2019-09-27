@@ -4,21 +4,21 @@
       "id": 1,
       "name": "Adult Male Bike",
       "price": 20.50,
-      "image": "/bicycles/mountainbike.jpg",
+      "image" : "http://via.placeholder.com/250x250?text=Adult%20Male%20Bike",
       "product_type": "bike"
     },
     {
       "id": 2,
       "name": "Adult Female Bike",
       "price": 20.50,
-      "image": "/bicycles/roadbike.jpg",
+      "image" : "http://via.placeholder.com/250x250?text=Adult%20Female%20Bike",
       "product_type": "bike"
     },
     {
       "id": 3,
       "name": "Kids Unisex Bike",
       "price": 12.75,
-      "image" : "/bicycles/kidsbike.jpg",
+      "image" : "http://via.placeholder.com/250x250?text=Kids%20Unisex%20Bike",
       "product_type": "bike"
     },
     {

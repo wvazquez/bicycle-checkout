@@ -60,7 +60,7 @@ class App extends Component {
 
   render(){
     return (
-      <Router basename={process.env.PUBLIC_URL}>
+      <Router >
         <Navigation cart={this.state.cart} totalQuantity={this.state.quantity}/>
         <Switch>
           <Route exact path='/' component={Bicycles}/>

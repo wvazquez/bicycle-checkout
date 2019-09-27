@@ -9,7 +9,7 @@
 .jumbotron-bicycle {
     min-height: calc(100vh - 76px);
     background: linear-gradient(var(--yellowTrans), var(--yellowTrans)),
-      url("/backgrounds/background-bicycle.jpg") center/cover fixed no-repeat;
+      url("./background-bicycle.jpg") center/cover fixed no-repeat;
     position: relative;
     display: flex;
     text-align: center;

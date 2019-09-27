@@ -1,4 +1,5 @@
 import React from "react";
+import Background from "./background-bicycle.jpg";
 import './style.css';
 
 const Jumbotron = ()=>(
