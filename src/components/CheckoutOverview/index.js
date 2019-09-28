@@ -7,17 +7,17 @@ class CheckoutOverview extends Component {
     addOns: []
   }
 
-  componentDidMount(){
-    this.setState(prevState => {
-      let addOns = this.props.cart.filter(addOn => addOn.product_type === 'accessory');
-      return ({addOns : addOns});
-    });
-    console.log(this.state.addOns);
+  componentDidUpdate(){
+    // this.setState(prevState => {
+    //   let addOns = this.props.cart.filter(addOn => addOn.product_type === 'accessory');
+    //   return ({addOns : addOns});
+    // });
+    // console.log(this.state.addOns);
   }
 
 
   handleAddOn = (product) =>{
-      let addOn = this.state.addOns.find((addOn) => addOn.id === product.id);
+      let addOn = this.props.cart.find((addOn) => addOn.id === product.id);
 
       if(addOn){
         this.props.removeFromCart(product.id);
@@ -26,14 +26,13 @@ class CheckoutOverview extends Component {
         this.props.addToCart(product, 1);
       }
   }
-  isChecked = (product) => {
-    let addOn = this.state.addOns.find((addOn) => addOn.id === product.id);
+  isChecked = (id) => {
+    let addOn = this.props.cart.find((addOn) => addOn.id === id);
     if(addOn){
       return true;
     }
     return false
   }
-  
 
   render() {
 
@@ -51,7 +50,13 @@ class CheckoutOverview extends Component {
                     <label htmlFor={product.id} className="text-black mr-1" data-toggle="collapse"
                       href={`#${product.id}`} role="button" aria-expanded="false"
                       aria-controls={product.id}>
-                    <input onChange={()=> this.handleAddOn(product)} className='mr-1' type="checkbox" value="1" id={product.id} />
+                        {
+                          this.isChecked(product.id) ? 
+                          <input checked={true}onChange={()=> this.handleAddOn(product)} className='mr-1' type="checkbox" value="1" id={product.id} />
+                          :
+                          <input checked={false} onChange={()=> this.handleAddOn(product)} className='mr-1' type="checkbox" value="1" id={product.id} />
+                        }
+                   
                       {product.name} - <strong>{this.props.formatMoney(product.price)}</strong></label>
                       <img className="input-image" src={product.image}/>
                     </div>
