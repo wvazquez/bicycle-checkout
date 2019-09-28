@@ -4,6 +4,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import Delete from '@material-ui/icons/Delete';
 
 
 import './style.css'
@@ -39,6 +41,14 @@ const SideCartItem = (props) => {
             </>
           }
         />
+        <IconButton aria-label="delete shopping cart item" color="inherit"
+              edge="end"
+              aria-controls='shopping-cart'
+              aria-haspopup="true"
+              onClick={() => props.removeFromCart(props.id)}
+              >
+                <Delete color='primary' />
+            </IconButton>
       </ListItem>
   );
 }

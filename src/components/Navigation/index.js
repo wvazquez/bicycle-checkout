@@ -9,12 +9,10 @@ import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import Button from '@material-ui/core/Button';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
 
 
-import SideCartItem from '../SideCartItem';
+import SideCart from '../SideCart';
+
 
 
 import { HashLink } from 'react-router-hash-link';
@@ -39,37 +37,6 @@ class Navigation extends Component {
 
     this.setState({ isShoppingCartOpen: open });
   };
-
-  renderSideCartItems = () => {
-    if (this.props.cart.length > 0) {
-      return this.props.cart.map((cartItem) => (
-            <SideCartItem key={cartItem.id.toString()} {...cartItem}/>
-        )
-      );
-    }
-    return <p>Your shopping cart is currently empty</p>
-  };
-
-  renderSideCart = () => (
-    <SwipeableDrawer
-      anchor="right"
-      open={this.state.isShoppingCartOpen}
-      onClose={this.toggleSideCart(false)}
-      onOpen={this.toggleSideCart(true)}
-    >
-      <div
-        className="sidecart-list"
-        role="presentation"
-      >
-        <h2>Shopping Cart</h2>
-        <Divider />
-        <List>
-          {this.renderSideCartItems()}
-        </List>
-
-      </div>
-    </SwipeableDrawer>
-  );
 
   renderMobileMenu = () => (
     <Menu
@@ -144,7 +111,7 @@ class Navigation extends Component {
           </Toolbar>
         </AppBar>
         {this.renderMobileMenu()}
-        {this.renderSideCart()}
+        <SideCart removeFromCart={this.props.removeFromCart} isShoppingCartOpen={this.state.isShoppingCartOpen} toggleSideCart={this.toggleSideCart} cart={this.props.cart}/>
       </div>
     );
 

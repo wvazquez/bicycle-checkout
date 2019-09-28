@@ -65,7 +65,7 @@ class App extends Component {
   render(){
     return (
       <Router >
-        <Navigation cart={this.state.cart} totalQuantity={this.state.quantity}/>
+        <Navigation removeFromCart={this.removeFromCart} cart={this.state.cart} totalQuantity={this.state.quantity}/>
         <Switch>
           <Route exact path='/' component={Bicycles}/>
           <Route exact path='/bicycles/:id' render={(props) => <ProductPage {...props} formatMoney={this.formatMoney} addToCart={this.addToCart}/>} />
