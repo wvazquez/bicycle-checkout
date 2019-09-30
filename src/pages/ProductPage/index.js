@@ -13,6 +13,7 @@ class ProductPage extends Component {
         price: '',
         image: '',
         quantity: 1,
+        product_type: "",
         animate: false
     }
 
@@ -36,13 +37,13 @@ class ProductPage extends Component {
     componentDidMount() {
         this.setState((prevState,props) => {
             const id = parseInt(props.match.params.id);
-            let { name, price, image } = products.find(element => {
+            let { name, price, image, product_type } = products.find(element => {
                 if (element.id === id) {
                     return element;
                 }
             });
 
-            return ({ id: id, name:name, price:price, image:image })
+            return ({ id: id, name:name, price:price, image:image, product_type:product_type })
         });
     }
 
