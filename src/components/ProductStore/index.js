@@ -31,6 +31,8 @@ const ProductStore = () => {
                     return (
                         <ProductCard price={price} name={name} key={id} id={id} image={image}/>
                     );
+                }else{
+                  return null;
                 }
             })
         }

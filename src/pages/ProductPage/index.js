@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 
 import { products } from '../../data/bikerentals.json';
 import QuantityControls from '../../components/QuantityControls';
-import Reviews from '../../components/Reviews';
 import {Success} from "../../components/Loader";
 import './style.css';
-import ProductStore from '../../components/ProductStore/index.js';
 
 class ProductPage extends Component {
 

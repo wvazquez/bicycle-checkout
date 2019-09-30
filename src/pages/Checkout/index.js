@@ -7,12 +7,10 @@ import Typography from '@material-ui/core/Typography';
 
 import BillingForm from '../../components/BillingForm';
 import OrderForm from '../../components/OrderForm';
-import DeliveryForm from '../../components/DeliveryForm';
 import CreditCardForm from '../../components/CreditCardForm';
 import ProductStore from '../../components/ProductStore';
 import CheckoutOverview from '../../components/CheckoutOverview';
 
-import {Loader, Success} from "../../components/Loader";
 
 import {HashLink as Link} from "react-router-hash-link";
 import './style.css'

@@ -7,14 +7,6 @@ class CheckoutOverview extends Component {
     addOns: []
   }
 
-  componentDidUpdate(){
-    // this.setState(prevState => {
-    //   let addOns = this.props.cart.filter(addOn => addOn.product_type === 'accessory');
-    //   return ({addOns : addOns});
-    // });
-    // console.log(this.state.addOns);
-  }
-
 
   handleAddOn = (product) =>{
       let addOn = this.props.cart.find((addOn) => addOn.id === product.id);
@@ -58,9 +50,11 @@ class CheckoutOverview extends Component {
                         }
                    
                       {product.name} - <strong>{this.props.formatMoney(product.price)}</strong></label>
-                      <img className="input-image" src={product.image}/>
+                      <img className="input-image" src={product.image} alt={`accessory item ${product.name}`}/>
                     </div>
                   );
+                }else{
+                  return null;
                 }
               })
             }

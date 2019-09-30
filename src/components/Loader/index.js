@@ -3,7 +3,7 @@ import './style.css';
 
 const Loader = () => (
     <div className="loader-container show-flex">
-        <img className="loader" src="/images/icons/loader.svg" alt="loader image" />
+        <img className="loader" src="/images/icons/loader.svg" alt="loader" />
     </div>
 );
 
