@@ -11,6 +11,7 @@ This project is a ficticious product reservation page for bicycle rentals. The m
 The main techonologies / Libraries used in this project include:
 * [React](https://reactjs.org)
 * [Material UI](https://material-ui.com)
+* [React Spring](https://www.react-spring.io)
 
 ## Link
 
