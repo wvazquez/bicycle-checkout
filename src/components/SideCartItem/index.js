@@ -7,11 +7,11 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Delete from '@material-ui/icons/Delete';
 import Edit from '@material-ui/icons/Edit';
+import Close from '@material-ui/icons/Close';
 import Save from '@material-ui/icons/SaveAlt';
-// import { useSpring, animated } from 'react-spring'
 import { Transition, animated } from 'react-spring/renderprops'
 import TextField from '@material-ui/core/TextField';
-
+import QuantityControls from '../QuantityControls';
 
 import './style.css'
 
@@ -20,35 +20,56 @@ class SideCartItem extends Component {
   state = {
     isEditing: false,
     quantity: 1
-
   }
 
-  componentDidMount(){
-      console.log("this is the props",this.props);
-    
-    this.setState({ quantity: this.props.quantity});
+  componentDidMount() {
+    this.setState({ quantity: this.props.quantity });
   }
   handleEdit = () => {
     this.setState(prevState => ({ isEditing: !prevState.isEditing }));
   }
-  handleEditChange = (event)=>{
-    if(parseInt(event.target.value)){
-      return this.setState({quantity : event.target.value});
-    }else if(event.target.value.trim().length === 0){
-       this.setState({quantity : ""});
+  handleEditChange = (event) => {
+    console.log(event.target.value.trim());
+    if (parseInt(event.target.value)) {
+      return this.setState({ quantity: event.target.value });
+    }
+
+    if (event.target.value.trim().length === 0) {
+      this.setState({ quantity: "" });
     }
   }
   handleSave = (id) => {
-    if(this.state.quantity === ""){
-      return this.handleEdit();
-      // this.setState({ quantity: });
-    }else if(this.state.quantity === 0){
+    // if (this.state.quantity === "") {
+    //   return this.handleEdit();
+    //   this.setState({ quantity: });
+    if (this.state.quantity === 0) {
       this.props.removeFromCart(id);
-    }else{
+    } else {
       this.props.editCartItem(id, this.state.quantity);
     }
+
+    this.handleEdit();
+  }
+  handleCancel = () => {
     
     this.handleEdit();
+    this.setState(prevState => ({ quantity: prevState.quantity }));
+  }
+  handleQuantity = (event) => {
+    const action = event.currentTarget.getAttribute('name');
+    if (action === 'decrease') {
+      if (this.checkQuantity()) {
+        this.setState({ quantity: this.state.quantity - 1 });
+      }
+      return;
+    } else {
+      this.setState({ quantity: this.state.quantity + 1 });
+    }
+  }
+  checkQuantity = () => {
+    if (this.state.quantity > 0) {
+      return true
+    }
   }
   render() {
     return (
@@ -88,41 +109,46 @@ class SideCartItem extends Component {
         >
           {show => show && (props => (
             <animated.div style={props}>
-              <TextField
-                id="standard-number"
-                label="Quantity"
-                value={this.state.quantity}
-                onChange={this.handleEditChange}
-                type="number"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                margin="normal"
-              />
+              <div>
+                <p>Quantity: </p>
+                <QuantityControls quantity={this.state.quantity} handleQuantity={this.handleQuantity}/>
+              </div>
+
             </animated.div>
           ))}
         </Transition>
         {
           this.state.isEditing ?
+          <>
             <IconButton aria-label="Save shopping cart item" color="inherit"
-              onClick={() => {this.handleSave(this.props.id)}}
+              onClick={() => { this.handleSave(this.props.id) }}
             >
               <Save color='primary' />
             </IconButton>
+            <IconButton aria-label="cancel cart item" color="inherit"
+            edge="end"
+            onClick={() => this.handleCancel()}
+          >
+            <Close color='primary' />
+          </IconButton>
+          </>
             :
+            <>
             <IconButton aria-label="edit shopping cart item" color="inherit"
               onClick={this.handleEdit}
             >
               <Edit color='primary' />
             </IconButton>
+            <IconButton aria-label="delete shopping cart item" color="inherit"
+            edge="end"
+            onClick={() => this.props.removeFromCart(this.props.id)}
+          >
+            <Delete color='primary' />
+          </IconButton>
+          </>
         }
 
-        <IconButton aria-label="delete shopping cart item" color="inherit"
-          edge="end"
-          onClick={() => this.props.removeFromCart(this.props.id)}
-        >
-          <Delete color='primary' />
-        </IconButton>
+        
       </ListItem>
     );
   }
