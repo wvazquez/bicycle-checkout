@@ -36,7 +36,7 @@ class CheckoutOverview extends Component {
           
             {
               products.map(product => {
-                if(product.product_type === 'accessory'){
+                if(product.product_type === 'accessory' || product.product_type === 'addon' ){
                   return (
                     <div className="form-group mt-3" key={product.id}>
                     <label htmlFor={product.id} className="text-black mr-1" data-toggle="collapse"

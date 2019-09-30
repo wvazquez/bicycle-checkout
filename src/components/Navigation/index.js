@@ -85,6 +85,7 @@ class Navigation extends Component {
             <div className="grow" />
             <div className="sectionDesktop">
               <Link to='/'> <Button className="button">Home</Button></Link>
+              <HashLink to='/#store'><Button className="button">Rentals</Button></HashLink>
               <Link to='/checkout'> <Button className="button">Checkout</Button></Link>
 
             </div>
