@@ -33,8 +33,10 @@ const renderSideCartItems = (cart, props) => {
   if (cart.length > 0) {
     return cart.map((cartItem) => {
      return (
- 
+ <>
       <SideCartItem editCartItem={props.editCartItem} removeFromCart={props.removeFromCart} key={cartItem.id.toString()} {...cartItem} />
+      <Divider variant="inset" component="li" />
+      </>
     )});
   }
   return <p>Your shopping cart is currently empty</p>

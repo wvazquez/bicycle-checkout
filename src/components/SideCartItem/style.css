@@ -1,3 +1,16 @@
 .sidecartitem-title{
     display: block;
 }
+
+@media(max-width: 960px){
+    .cart-item{
+        display: block !important;
+        text-align: center !important;
+    }
+    .cart-item-image{
+        margin: 0 auto;
+    }
+    .transition-container{
+        order: 5;
+    }
+}

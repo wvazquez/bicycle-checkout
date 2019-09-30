@@ -10,7 +10,6 @@ import Edit from '@material-ui/icons/Edit';
 import Close from '@material-ui/icons/Close';
 import Save from '@material-ui/icons/SaveAlt';
 import { Transition, animated } from 'react-spring/renderprops'
-import TextField from '@material-ui/core/TextField';
 import QuantityControls from '../QuantityControls';
 
 import './style.css'
@@ -39,9 +38,6 @@ class SideCartItem extends Component {
     }
   }
   handleSave = (id) => {
-    // if (this.state.quantity === "") {
-    //   return this.handleEdit();
-    //   this.setState({ quantity: });
     if (this.state.quantity === 0) {
       this.props.removeFromCart(id);
     } else {
@@ -51,7 +47,6 @@ class SideCartItem extends Component {
     this.handleEdit();
   }
   handleCancel = () => {
-    
     this.handleEdit();
     this.setState(prevState => ({ quantity: prevState.quantity }));
   }
@@ -74,9 +69,9 @@ class SideCartItem extends Component {
   render() {
     return (
 
-      <ListItem key={this.props.id} alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar alt={this.props.name} src={this.props.image} />
+      <ListItem key={this.props.id} alignItems="center" className="cart-item">
+        <ListItemAvatar >
+          <Avatar className="cart-item-image" alt={this.props.name} src={this.props.image} />
         </ListItemAvatar>
         <ListItemText
           primary={this.props.name}
@@ -100,11 +95,11 @@ class SideCartItem extends Component {
             </>
           }
         />
-        <Transition
+        <Transition className="transition-container"
           items={this.state.isEditing}
-          from={{ transform: 'translate3d(40px,0px,0)', opacity: 0 }}
+          from={{ transform: 'translate3d(0px,40px,0)', opacity: 0 }}
           enter={{ transform: 'translate3d(0,0px,0)', opacity: 1 }}
-          leave={{ transform: 'translate3d(40px,0px,0)', opacity: 0 }}
+          leave={{ transform: 'translate3d(0px,40px,0)', opacity: 0 }}
           config={{ duration: 100 }}
         >
           {show => show && (props => (
