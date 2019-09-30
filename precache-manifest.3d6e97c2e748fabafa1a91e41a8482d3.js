@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9ea00dc94a9b15a9f7b3213db7e884e1",
+    "revision": "1cce1e33c86bfd64967f6ddf597559c6",
     "url": "/bicycle-checkout/index.html"
   },
   {
-    "revision": "504272a4ba52cabcb066",
-    "url": "/bicycle-checkout/static/css/main.e68629ce.chunk.css"
+    "revision": "b0c2a5fbad5c4a7eb84a",
+    "url": "/bicycle-checkout/static/css/main.b1dbc458.chunk.css"
   },
   {
-    "revision": "5c89617b215ba67e53ec",
-    "url": "/bicycle-checkout/static/js/2.1d5da86d.chunk.js"
+    "revision": "3bc809420716eb67a51e",
+    "url": "/bicycle-checkout/static/js/2.8810115f.chunk.js"
   },
   {
-    "revision": "504272a4ba52cabcb066",
-    "url": "/bicycle-checkout/static/js/main.39eb14b0.chunk.js"
+    "revision": "b0c2a5fbad5c4a7eb84a",
+    "url": "/bicycle-checkout/static/js/main.c75c3f06.chunk.js"
   },
   {
     "revision": "2199c30e0837e94b5e74",
