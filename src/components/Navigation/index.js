@@ -111,7 +111,7 @@ class Navigation extends Component {
           </Toolbar>
         </AppBar>
         {this.renderMobileMenu()}
-        <SideCart removeFromCart={this.props.removeFromCart} isShoppingCartOpen={this.state.isShoppingCartOpen} toggleSideCart={this.toggleSideCart} cart={this.props.cart}/>
+        <SideCart editCartItem={this.props.editCartItem} removeFromCart={this.props.removeFromCart} isShoppingCartOpen={this.state.isShoppingCartOpen} toggleSideCart={this.toggleSideCart} cart={this.props.cart}/>
       </div>
     );
 

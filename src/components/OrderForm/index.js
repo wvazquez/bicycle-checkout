@@ -39,7 +39,6 @@ const OrderForm = (props) => {
                                         <tr key={cartItem.id}>
                                             <td>
                                                 <IconButton aria-label="delete shopping cart item" color="inherit"
-                                                    // edge="end"
                                                     aria-controls='shopping-cart'
                                                     aria-haspopup="true"
                                                     onClick={() => props.removeFromCart(cartItem.id)}

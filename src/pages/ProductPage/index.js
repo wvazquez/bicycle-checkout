@@ -5,6 +5,7 @@ import QuantityControls from '../../components/QuantityControls';
 import Reviews from '../../components/Reviews';
 import {Success} from "../../components/Loader";
 import './style.css';
+import ProductStore from '../../components/ProductStore/index.js';
 
 class ProductPage extends Component {
 
@@ -76,7 +77,7 @@ class ProductPage extends Component {
                                 {
                                     !this.state.animate ? 
 
-                                    <p><span onAnimationEnd={() => this.setState({ animate: false })} className="buy-now btn btn-sm height-auto px-4 py-3 btn-primary" onClick={() => this.handleAddToCart()}>Add To Cart</span></p>
+                                    <p><span onAnimationEnd={() => this.setState({ animate: false })} className="addToCart-button btn btn-sm height-auto px-4 py-3 btn-primary" onClick={() => this.handleAddToCart()}>Add To Cart</span></p>
                                     :
                                     <Success />
                                 }

@@ -54,8 +54,16 @@ class App extends Component {
       }
     });
   }
-  reduceFromCart= ()=> {
+  editCartItem = (id, quantity)=> {
+    this.setState(prevState => {
+      let item = prevState.cart.find(cartItem => cartItem.id === id);
+      let newCart = prevState.cart.filter(cartItem => cartItem.id !== id);
+      let newQuantity = quantity - item.quantity;
 
+      item.quantity = quantity
+
+      return ({cart : [...newCart, item], quantity: prevState.quantity + newQuantity})
+    });
   }
 
   getAddOns = () =>{
@@ -65,7 +73,7 @@ class App extends Component {
   render(){
     return (
       <Router >
-        <Navigation removeFromCart={this.removeFromCart} cart={this.state.cart} totalQuantity={this.state.quantity}/>
+        <Navigation editCartItem={this.editCartItem} removeFromCart={this.removeFromCart} cart={this.state.cart} totalQuantity={this.state.quantity}/>
         <Switch>
           <Route exact path='/' component={Bicycles}/>
           <Route exact path='/bicycles/:id' render={(props) => <ProductPage {...props} formatMoney={this.formatMoney} addToCart={this.addToCart}/>} />
