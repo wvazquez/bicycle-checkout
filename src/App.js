@@ -23,7 +23,7 @@ class App extends Component {
 
   formatMoney = (number) => number.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
 
-  addToCart = (item) => {
+  addCartItem = (item) => {
     this.setState(prevState => {
         let existingProductIndex = prevState.cart.findIndex((cartItem) => (cartItem.id === item.id));
         let cart = [];
@@ -41,10 +41,21 @@ class App extends Component {
         })
       });
   }
-  removeFromCart = (key) => {
+  editCartItem = (id, quantity) => {
+    this.setState(prevState => {
+      let existingProductIndex = prevState.cart.findIndex((cartItem) => (cartItem.id === id));
 
-    let productToRemove = this.state.cart.find((cartItem) => cartItem.id === key);
-    let newCart = this.state.cart.filter(cartItem => cartItem.id !== key);
+      let newCart = prevState.cart;
+      let newQuantity = quantity - newCart[existingProductIndex].quantity;
+      newCart[existingProductIndex].quantity = quantity
+
+      return ({ cart: [...newCart], quantity: prevState.quantity + newQuantity })
+    });
+  }
+  
+  removeCartItem = (id) => {
+    let productToRemove = this.state.cart.find((cartItem) => cartItem.id === id);
+    let newCart = this.state.cart.filter(cartItem => cartItem.id !== id);
 
     if (productToRemove) {
       if ((newCart.find((cartItem) => cartItem.product_type === 'bike') || (this.state.cart.length === 1 && productToRemove.product_type === 'bike'))) {
@@ -85,17 +96,7 @@ class App extends Component {
       </Dialog>
     );
   }
-  editCartItem = (id, quantity) => {
-    this.setState(prevState => {
-      let item = prevState.cart.find(cartItem => cartItem.id === id);
-      let newCart = prevState.cart.filter(cartItem => cartItem.id !== id);
-      let newQuantity = quantity - item.quantity;
-
-      item.quantity = quantity
-
-      return ({ cart: [...newCart, item], quantity: prevState.quantity + newQuantity })
-    });
-  }
+ 
 
   getAddOns = () => {
     return this.state.cart.filter(cartItem => cartItem.product_type === "accessories");
@@ -105,12 +106,12 @@ class App extends Component {
     return (
       <Router >
 
-        <Navigation editCartItem={this.editCartItem} removeFromCart={this.removeFromCart} cart={this.state.cart} totalQuantity={this.state.quantity} />
+        <Navigation editCartItem={this.editCartItem} removeCartItem={this.removeCartItem} cart={this.state.cart} totalQuantity={this.state.quantity} />
         {this.renderWarning()}
         <Switch>
           <Route exact path='/' component={Bicycles} />
-          <Route exact path='/bicycles/:id' render={(props) => <ProductPage {...props} formatMoney={this.formatMoney} addToCart={this.addToCart} />} />
-          <Route exact path='/checkout' render={() => <Checkout cart={this.state.cart} formatMoney={this.formatMoney} addToCart={this.addToCart} removeFromCart={this.removeFromCart} />} />
+          <Route exact path='/bicycles/:id' render={(props) => <ProductPage {...props} formatMoney={this.formatMoney} addCartItem={this.addCartItem} />} />
+          <Route exact path='/checkout' render={() => <Checkout cart={this.state.cart} formatMoney={this.formatMoney} addCartItem={this.addCartItem} removeCartItem={this.removeCartItem} />} />
         </Switch>
       </Router>
 

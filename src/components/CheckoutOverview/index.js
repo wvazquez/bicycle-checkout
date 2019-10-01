@@ -12,10 +12,10 @@ class CheckoutOverview extends Component {
       let addOn = this.props.cart.find((addOn) => addOn.id === product.id);
 
       if(addOn){
-        this.props.removeFromCart(product.id);
+        this.props.removeCartItem(product.id);
       }else{
         product.quantity = 1;
-        this.props.addToCart(product);
+        this.props.addCartItem(product);
       }
   }
   isChecked = (id) => {

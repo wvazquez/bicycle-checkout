@@ -47,10 +47,10 @@ class ProductPage extends Component {
         });
     }
 
-    handleAddToCart = ()=>{
+    handleaddCartItem = ()=>{
         clearTimeout(this.timeoutID)
         this.setState({animate: true});
-        this.props.addToCart(this.state)
+        this.props.addCartItem(this.state)
         this.setState({ quantity: 1});
         this.timeoutID = setTimeout(()=>{ this.setState({animate: false}) }, 2500);
     }
@@ -76,7 +76,7 @@ class ProductPage extends Component {
                                 {
                                     !this.state.animate ? 
 
-                                    <p><span onAnimationEnd={() => this.setState({ animate: false })} className="addToCart-button btn btn-sm height-auto px-4 py-3 btn-primary" onClick={() => this.handleAddToCart()}>Add To Cart</span></p>
+                                    <p><span onAnimationEnd={() => this.setState({ animate: false })} className="addCartItem-button btn btn-sm height-auto px-4 py-3 btn-primary" onClick={() => this.handleaddCartItem()}>Add To Cart</span></p>
                                     :
                                     <Success />
                                 }

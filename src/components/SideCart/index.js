@@ -33,7 +33,7 @@ const renderSideCartItems = (cart, props) => {
   if (cart.length > 0) {
     return cart.map((cartItem, index) => {
      return (
-      <SideCartItem editCartItem={props.editCartItem} removeFromCart={props.removeFromCart} key={cartItem.id.toString()} {...cartItem} />
+      <SideCartItem editCartItem={props.editCartItem} removeCartItem={props.removeCartItem} key={cartItem.id.toString()} {...cartItem} />
  
     )});
   }

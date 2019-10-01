@@ -39,7 +39,7 @@ class SideCartItem extends Component {
   }
   handleSave = (id) => {
     if (this.state.quantity === 0) {
-      this.props.removeFromCart(id);
+      this.props.removeCartItem(id);
     } else {
       this.props.editCartItem(id, this.state.quantity);
     }
@@ -136,7 +136,7 @@ class SideCartItem extends Component {
             </IconButton>
             <IconButton aria-label="delete shopping cart item" color="inherit"
             edge="end"
-            onClick={() => this.props.removeFromCart(this.props.id)}
+            onClick={() => this.props.removeCartItem(this.props.id)}
           >
             <Delete color='primary' />
           </IconButton>
