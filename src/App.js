@@ -23,28 +23,22 @@ class App extends Component {
 
   formatMoney = (number) => number.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
 
-  addToCart = (item, quantity) => {
-    console.log(this.state.cart);
-    this.setState(
-      prevState => {
+  addToCart = (item) => {
+    this.setState(prevState => {
+        let existingProductIndex = prevState.cart.findIndex((cartItem) => (cartItem.id === item.id));
+        let cart = [];
 
-
-        let existingProduct = prevState.cart.find((cartItem) => cartItem.id === item.id);
-
-        if (existingProduct) {
-          let newCart = prevState.cart.filter(cartItem => cartItem.id !== item.id);
-          let newQuantity = existingProduct.quantity += quantity;
-          existingProduct.quantity = newQuantity;
-          return ({
-            cart: [...newCart, existingProduct],
-            quantity: prevState.quantity + quantity
-          })
+        if (existingProductIndex >= 0) {
+          let newCart = prevState.cart;
+          newCart[existingProductIndex].quantity += item.quantity;
+          cart = [...newCart];
         } else {
-          return ({
-            cart: [...prevState.cart, item],
-            quantity: prevState.quantity + quantity
-          })
+          cart = [...prevState.cart, item];
         }
+        return ({
+          cart: cart,
+          quantity: prevState.quantity + item.quantity
+        })
       });
   }
   removeFromCart = (key) => {
@@ -53,7 +47,6 @@ class App extends Component {
     let newCart = this.state.cart.filter(cartItem => cartItem.id !== key);
 
     if (productToRemove) {
-      console.log()
       if ((newCart.find((cartItem) => cartItem.product_type === 'bike') || (this.state.cart.length === 1 && productToRemove.product_type === 'bike'))) {
         this.setState(prevState =>
           ({
