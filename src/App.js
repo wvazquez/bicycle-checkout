@@ -52,7 +52,7 @@ class App extends Component {
       return ({ cart: [...newCart], quantity: prevState.quantity + newQuantity })
     });
   }
-  
+
   removeCartItem = (id) => {
     let productToRemove = this.state.cart.find((cartItem) => cartItem.id === id);
     let newCart = this.state.cart.filter(cartItem => cartItem.id !== id);
@@ -68,7 +68,6 @@ class App extends Component {
         this.toggleAlert();
       }
     }
-
   }
 
   toggleAlert = () => {
@@ -97,21 +96,25 @@ class App extends Component {
     );
   }
  
-
-  getAddOns = () => {
-    return this.state.cart.filter(cartItem => cartItem.product_type === "accessories");
+  cartFunctions = {
+    addCartItem: this.addCartItem,
+    editCartItem: this.editCartItem,
+    removeCartItem: this.removeCartItem,
+    formatMoney: this.formatMoney
   }
+
 
   render() {
     return (
       <Router >
 
-        <Navigation editCartItem={this.editCartItem} removeCartItem={this.removeCartItem} cart={this.state.cart} totalQuantity={this.state.quantity} />
+        <Navigation cart={this.state.cart} totalQuantity={this.state.quantity} {...this.cartFunctions} />
         {this.renderWarning()}
         <Switch>
           <Route exact path='/' component={Bicycles} />
           <Route exact path='/bicycles/:id' render={(props) => <ProductPage {...props} formatMoney={this.formatMoney} addCartItem={this.addCartItem} />} />
-          <Route exact path='/checkout' render={() => <Checkout cart={this.state.cart} formatMoney={this.formatMoney} addCartItem={this.addCartItem} removeCartItem={this.removeCartItem} />} />
+          <Route exact path='/checkout' render={() => <Checkout cart={this.state.cart} {...this.cartFunctions}/>} />
+
         </Switch>
       </Router>
 
