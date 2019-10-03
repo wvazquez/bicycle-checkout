@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { products } from '../../data/bikerentals.json';
 import QuantityControls from '../../components/QuantityControls';
 import {Success} from "../../components/Loader";
+import ProductStore from '../../components/ProductStore';
 import './style.css';
 
 class ProductPage extends Component {
@@ -85,6 +86,7 @@ class ProductPage extends Component {
                         </div>
                     </div>
                 </div>
+                <ProductStore />
             </div>
         );
     }
