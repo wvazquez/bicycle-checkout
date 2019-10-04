@@ -9,10 +9,11 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
 
 import Navigation from './components/Navigation';
-import Bicycles from './pages/Bicycles';
+import HomePage from './pages/HomePage';
 import ProductPage from './pages/ProductPage';
 import Checkout from './pages/Checkout';
 
+import CartProvider from './components/CartProvider';
 
 class App extends Component {
   state = {
@@ -106,18 +107,19 @@ class App extends Component {
 
   render() {
     return (
+      <CartProvider>
       <Router >
 
         <Navigation cart={this.state.cart} totalQuantity={this.state.quantity} {...this.cartFunctions} />
         {this.renderWarning()}
         <Switch>
-          <Route exact path='/' component={Bicycles} />
+          <Route exact path='/' component={HomePage} />
           <Route exact path='/bicycles/:id' render={(props) => <ProductPage {...props} formatMoney={this.formatMoney} addCartItem={this.addCartItem} />} />
           <Route exact path='/checkout' render={() => <Checkout cart={this.state.cart} {...this.cartFunctions}/>} />
 
         </Switch>
       </Router>
-
+      </CartProvider>
     );
   }
 

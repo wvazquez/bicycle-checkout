@@ -12,6 +12,7 @@ import Save from '@material-ui/icons/SaveAlt';
 import { Transition, animated } from 'react-spring/renderprops'
 import QuantityControls from '../QuantityControls';
 
+import {Context} from '../CartProvider';
 import './style.css'
 
 
@@ -68,23 +69,33 @@ class SideCartItem extends Component {
   }
   render() {
     return (
-
+      
       <ListItem key={this.props.id} alignItems="center" className="cart-item">
         <ListItemAvatar >
           <Avatar className="cart-item-image" alt={this.props.name} src={this.props.image} />
         </ListItemAvatar>
+        <div className="cart-item-body">
         <ListItemText
-          primary={this.props.name}
-          secondary={
-            <>
-              <Typography
-                component="span"
-                className="sidecartitem-title"
-                variant="body2"
-                color="textPrimary"
-              >
-                ${this.props.price} / each
-              </Typography>
+          primary={this.props.name}      
+        />
+        
+                <Context.Consumer>
+                {(context) =>  (
+                  <Typography
+                  component="span"
+                  className="sidecartitem-title"
+                  variant="body2"
+                  color="textPrimary"
+                >
+
+                  {context.formatMoney(this.props.price)}/ each
+                  </Typography>
+                )}
+                
+                
+                </Context.Consumer>
+              
+              
               <Typography
                 component="span"
                 variant="body2"
@@ -92,9 +103,7 @@ class SideCartItem extends Component {
               >
                 Quantity: {this.props.quantity}
               </Typography>
-            </>
-          }
-        />
+              </div>
         <Transition className="transition-container"
           items={this.state.isEditing}
           from={{ transform: 'translate3d(0px,40px,0)', opacity: 0 }}

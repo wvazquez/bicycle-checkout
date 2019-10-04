@@ -1,7 +1,10 @@
 .sidecartitem-title{
-    display: block;
+    /* display:  */
 }
-
+cart-item-body{
+    display: flex;
+    flex-direction: column;
+}
 @media(max-width: 960px){
     .cart-item{
         display: block !important;
