@@ -25,6 +25,7 @@ class App extends Component {
   // formatMoney = (number) => number.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
 
   addCartItem = (item) => {
+    console.log('reached here')
     this.setState(prevState => {
         let existingProductIndex = prevState.cart.findIndex((cartItem) => (cartItem.id === item.id));
         let cart = [];
@@ -98,7 +99,7 @@ class App extends Component {
   }
  
   cartFunctions = {
-    addCartItem: this.addCartItem,
+    // addCartItem: this.addCartItem,
     editCartItem: this.editCartItem,
     // removeCartItem: this.removeCartItem,
     formatMoney: this.formatMoney
