@@ -22,7 +22,7 @@ class App extends Component {
     isAlertOpen: false
   }
 
-  formatMoney = (number) => number.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+  // formatMoney = (number) => number.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
 
   addCartItem = (item) => {
     this.setState(prevState => {
@@ -100,7 +100,7 @@ class App extends Component {
   cartFunctions = {
     addCartItem: this.addCartItem,
     editCartItem: this.editCartItem,
-    removeCartItem: this.removeCartItem,
+    // removeCartItem: this.removeCartItem,
     formatMoney: this.formatMoney
   }
 
@@ -114,7 +114,7 @@ class App extends Component {
         {this.renderWarning()}
         <Switch>
           <Route exact path='/' component={HomePage} />
-          <Route exact path='/bicycles/:id' render={(props) => <ProductPage {...props} formatMoney={this.formatMoney} addCartItem={this.addCartItem} />} />
+          <Route exact path='/bicycles/:id' render={(props) => <ProductPage {...props} addCartItem={this.addCartItem} />} />
           <Route exact path='/checkout' render={() => <Checkout cart={this.state.cart} {...this.cartFunctions}/>} />
 
         </Switch>

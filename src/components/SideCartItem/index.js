@@ -12,7 +12,7 @@ import Save from '@material-ui/icons/SaveAlt';
 import { Transition, animated } from 'react-spring/renderprops'
 import QuantityControls from '../QuantityControls';
 
-import {Context} from '../CartProvider';
+import { Context } from '../CartProvider';
 import './style.css'
 
 
@@ -69,41 +69,39 @@ class SideCartItem extends Component {
   }
   render() {
     return (
-      
+
       <ListItem key={this.props.id} alignItems="center" className="cart-item">
         <ListItemAvatar >
           <Avatar className="cart-item-image" alt={this.props.name} src={this.props.image} />
         </ListItemAvatar>
         <div className="cart-item-body">
-        <ListItemText
-          primary={this.props.name}      
-        />
-        
-                <Context.Consumer>
-                {(context) =>  (
-                  <Typography
-                  component="span"
-                  className="sidecartitem-title"
-                  variant="body2"
-                  color="textPrimary"
-                >
+          <ListItemText
+            primary={this.props.name}
+          />
 
-                  {context.formatMoney(this.props.price)}/ each
-                  </Typography>
-                )}
-                
-                
-                </Context.Consumer>
-              
-              
+          <Context.Consumer>
+            {({ formatMoney }) => (
               <Typography
                 component="span"
+                className="sidecartitem-title"
                 variant="body2"
                 color="textPrimary"
               >
-                Quantity: {this.props.quantity}
-              </Typography>
-              </div>
+
+                {formatMoney(this.props.price)}/ each
+                  </Typography>
+            )}
+          </Context.Consumer>
+
+
+          <Typography
+            component="span"
+            variant="body2"
+            color="textPrimary"
+          >
+            Quantity: {this.props.quantity}
+          </Typography>
+        </div>
         <Transition className="transition-container"
           items={this.state.isEditing}
           from={{ transform: 'translate3d(0px,40px,0)', opacity: 0 }}
@@ -115,7 +113,7 @@ class SideCartItem extends Component {
             <animated.div style={props}>
               <div>
                 <p>Quantity: </p>
-                <QuantityControls quantity={this.state.quantity} handleQuantity={this.handleQuantity}/>
+                <QuantityControls quantity={this.state.quantity} handleQuantity={this.handleQuantity} />
               </div>
 
             </animated.div>
@@ -123,36 +121,53 @@ class SideCartItem extends Component {
         </Transition>
         {
           this.state.isEditing ?
-          <>
-            <IconButton aria-label="Save shopping cart item" color="inherit"
-              onClick={() => { this.handleSave(this.props.id) }}
-            >
-              <Save color='primary' />
-            </IconButton>
-            <IconButton aria-label="cancel cart item" color="inherit"
-            edge="end"
-            onClick={() => this.handleCancel()}
-          >
-            <Close color='primary' />
-          </IconButton>
-          </>
+            <>
+              <Context.Consumer>
+                {
+                  (context) => (
+                    <IconButton aria-label="Save shopping cart item" color="inherit"
+                      onClick={() => { this.handleSave(this.props.id) }}
+                    >
+                      <Save color='primary' />
+                    </IconButton>
+                  )
+                }
+
+              </Context.Consumer>
+              <IconButton aria-label="cancel cart item" color="inherit"
+                edge="end"
+                onClick={() => this.handleCancel()}
+              >
+                <Close color='primary' />
+              </IconButton>
+            </>
             :
             <>
-            <IconButton aria-label="edit shopping cart item" color="inherit"
-              onClick={this.handleEdit}
-            >
-              <Edit color='primary' />
-            </IconButton>
-            <IconButton aria-label="delete shopping cart item" color="inherit"
-            edge="end"
-            onClick={() => this.props.removeCartItem(this.props.id)}
-          >
-            <Delete color='primary' />
-          </IconButton>
-          </>
+              <IconButton aria-label="edit shopping cart item" color="inherit"
+                onClick={this.handleEdit}
+              >
+                <Edit color='primary' />
+              </IconButton>
+              <Context.Consumer>
+                {
+                  (context) => (
+                    <IconButton aria-label="delete shopping cart item" color="inherit"
+                      edge="end"
+                      onClick={() => {
+                        console.log('hello: ', this.props)
+                        context.removeCartItem(this.props.id)
+                      }}
+                    >
+                      <Delete color='primary' />
+                    </IconButton>
+                  )
+                }
+
+              </Context.Consumer>
+            </>
         }
 
-        
+
       </ListItem>
     );
   }

@@ -48,7 +48,7 @@ class CheckoutOverview extends Component {
                           :
                           <input checked={false} onChange={()=> this.handleAddOn(product)} className='mr-1' type="checkbox" value="1" id={product.id} />
                         }
-                   
+                      
                       {product.name} - <strong>{this.props.formatMoney(product.price)}</strong></label>
                       <img className="input-image" src={product.image} alt={`accessory item ${product.name}`}/>
                     </div>

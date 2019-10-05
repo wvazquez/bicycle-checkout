@@ -4,6 +4,7 @@ import { products } from '../../data/bikerentals.json';
 import QuantityControls from '../../components/QuantityControls';
 import {Success} from "../../components/Loader";
 import ProductStore from '../../components/ProductStore';
+import {Context} from '../../components/CartProvider'
 import './style.css';
 
 class ProductPage extends Component {
@@ -36,16 +37,11 @@ class ProductPage extends Component {
     }
 
     componentDidMount() {
-        this.setState((prevState,props) => {
-            const id = parseInt(props.match.params.id);
-            let { name, price, image, product_type } = products.find(element => {
-                if (element.id === id) {
-                    return element;
-                }
-            });
+        const urlID = parseInt(this.props.match.params.id);
+        let { id, name, price, image, product_type } = products.find(element => (element.id === urlID));
+        this.setState({ id: id, name:name, price:price, image:image, product_type:product_type });
 
-            return ({ id: id, name:name, price:price, image:image, product_type:product_type })
-        });
+        //need to eventually implement id's that are not found.
     }
 
     handleaddCartItem = ()=>{
@@ -70,7 +66,14 @@ class ProductPage extends Component {
                                 <img className="d-block w-100" src={this.state.image} alt={this.state.name} />
                             </div>
                             <div className="col-lg-5 ml-auto">
-                                <h2 className="text-primary">{this.state.name} - {this.props.formatMoney(this.state.price)}</h2>
+                                <Context.Consumer>
+                                    {
+                                        (context) => (
+                                            <h2 className="text-primary">{this.state.name} - {context.formatMoney(this.state.price)}</h2>
+                                        )
+                                    }
+                                
+                                </Context.Consumer>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non eos inventore aspernatur voluptatibus ratione odit molestias molestiae, illum et impedit veniam modi sunt quas nam mollitia earum perferendis, dolorem. Magni.</p>
 
                                 <QuantityControls handleQuantity={this.handleQuantity} quantity={this.state.quantity}/>
