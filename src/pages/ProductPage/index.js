@@ -33,18 +33,25 @@ class ProductPage extends Component {
 
     // Starts animation and add the item to the cart. 
     handleAddCartItem = (addCartItem) => {
-        clearTimeout(this.timeoutID)
-        this.setState({ 
-            animate: true, 
-            quantity: 1 
-        });
-
         addCartItem(this.state);
+        this.buttonAnimate();
+    }
 
+    buttonAnimate = () => {
+        clearTimeout(this.timeoutID)
+        this.setState(prevState => ({animate: !prevState.animate}));
         this.timeoutID = setTimeout(() => { 
-            this.setState({ animate: false }) }, 
+            this.setState(prevState => ({animate: !prevState.animate}));;
+            this.resetQuantity();
+            }, 
             2500
         );
+    }
+    setQuantity = (quantity) => {
+        this.setState({quantity: quantity});
+    }
+    resetQuantity = () => {
+        this.setState({quantity: 1});
     }
 
     render() {
@@ -67,11 +74,10 @@ class ProductPage extends Component {
                                             {
                                                 !this.state.animate ?
 
-                                                    <p><span onAnimationEnd={() => this.setState({ animate: false })} className="addCartItem-button btn btn-sm height-auto px-4 py-3 btn-primary" onClick={() => this.handleAddCartItem(addCartItem)}>Add To Cart</span></p>
+                                                    <p><span className="addCartItem-button btn btn-sm height-auto px-4 py-3 btn-primary" onClick={() => this.handleAddCartItem(addCartItem)}>Add To Cart</span></p>
                                                     :
                                                     <Success />
                                             }
-
                                         </div>
                                     </div>
                                 </div>
@@ -82,35 +88,6 @@ class ProductPage extends Component {
             </Context.Consumer>
         );
     }
-
-    setQuantity = (quantity) => {
-        console.log('reached here', this.state)
-        this.setState({quantity: quantity});
-    }
-
-    // handleQuantity = (event) => {
-    //     const action = event.currentTarget.getAttribute('name');
-    //     if (action === 'decrease') {
-    //         if (this.checkQuantity()) {
-    //             this.setState({ quantity: this.state.quantity - 1 });
-    //         }
-    //         return;
-    //     } else {
-    //         this.setState({ quantity: this.state.quantity + 1 });
-    //     }
-    // }
-    // checkQuantity = () => {
-    //     if (this.state.quantity > 0) {
-    //         return true
-    //     }
-    // }
-
-
-    
-
-
-
-
 }
 
 
