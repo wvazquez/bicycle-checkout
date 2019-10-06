@@ -31,6 +31,22 @@ class ProductPage extends Component {
         clearTimeout(this.timeoutID);
     }
 
+    // Starts animation and add the item to the cart. 
+    handleAddCartItem = (addCartItem) => {
+        clearTimeout(this.timeoutID)
+        this.setState({ 
+            animate: true, 
+            quantity: 1 
+        });
+
+        addCartItem(this.state);
+
+        this.timeoutID = setTimeout(() => { 
+            this.setState({ animate: false }) }, 
+            2500
+        );
+    }
+
     render() {
         let { image, name, price, quantity } = this.state;
         return (
@@ -45,14 +61,9 @@ class ProductPage extends Component {
                                             <img className="d-block w-100" src={image} alt={name} />
                                         </div>
                                         <div className="col-lg-5 ml-auto">
-
                                             <h2 className="text-primary">{name} - {formatMoney(price)}</h2>
-
-
-
                                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non eos inventore aspernatur voluptatibus ratione odit molestias molestiae, illum et impedit veniam modi sunt quas nam mollitia earum perferendis, dolorem. Magni.</p>
-
-                                            <QuantityControls handleQuantity={this.handleQuantity} quantity={quantity} />
+                                            <QuantityControls setQuantity={this.setQuantity} quantity={quantity} />
                                             {
                                                 !this.state.animate ?
 
@@ -72,39 +83,30 @@ class ProductPage extends Component {
         );
     }
 
-    handleQuantity = (event) => {
-        const action = event.currentTarget.getAttribute('name');
-        if (action === 'decrease') {
-            if (this.checkQuantity()) {
-                this.setState({ quantity: this.state.quantity - 1 });
-            }
-            return;
-        } else {
-            this.setState({ quantity: this.state.quantity + 1 });
-        }
-    }
-    checkQuantity = () => {
-        if (this.state.quantity > 0) {
-            return true
-        }
+    setQuantity = (quantity) => {
+        console.log('reached here', this.state)
+        this.setState({quantity: quantity});
     }
 
+    // handleQuantity = (event) => {
+    //     const action = event.currentTarget.getAttribute('name');
+    //     if (action === 'decrease') {
+    //         if (this.checkQuantity()) {
+    //             this.setState({ quantity: this.state.quantity - 1 });
+    //         }
+    //         return;
+    //     } else {
+    //         this.setState({ quantity: this.state.quantity + 1 });
+    //     }
+    // }
+    // checkQuantity = () => {
+    //     if (this.state.quantity > 0) {
+    //         return true
+    //     }
+    // }
 
-    // Starts animation and add the item to the cart. 
-    handleAddCartItem = (addCartItem) => {
-        clearTimeout(this.timeoutID)
-        this.setState({ 
-            animate: true, 
-            quantity: 1 
-        });
 
-        addCartItem(this.state);
-
-        this.timeoutID = setTimeout(() => { 
-            this.setState({ animate: false }) }, 
-            2500
-        );
-    }
+    
 
 
 

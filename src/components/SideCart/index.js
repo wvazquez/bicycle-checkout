@@ -4,11 +4,15 @@ import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 
 import SideCartItem from '../SideCartItem';
+import { Context } from '../CartProvider';
 import './style.css';
 
 
 const renderSideCart = (props) => (
-  <SwipeableDrawer
+  <Context.Consumer>
+    {
+      ({state})=>(
+        <SwipeableDrawer
     anchor="right"
     open={props.isShoppingCartOpen}
     onClose={props.toggleSideCart(false)}
@@ -21,11 +25,15 @@ const renderSideCart = (props) => (
       <h2 className='sidecart-title'>Shopping Cart</h2>
       <Divider />
       <List>
-        {renderSideCartItems(props.cart, props)}
+        {renderSideCartItems(state.cart, props)}
       </List>
 
     </div>
   </SwipeableDrawer>
+      )
+    }
+  
+  </Context.Consumer>
 );
 
 const renderSideCartItems = (cart, props) => {
