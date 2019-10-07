@@ -25,23 +25,22 @@ class App extends Component {
   // formatMoney = (number) => number.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
 
   addCartItem = (item) => {
-    console.log('reached here')
     this.setState(prevState => {
-        let existingProductIndex = prevState.cart.findIndex((cartItem) => (cartItem.id === item.id));
-        let cart = [];
+      let existingProductIndex = prevState.cart.findIndex((cartItem) => (cartItem.id === item.id));
+      let cart = [];
 
-        if (existingProductIndex >= 0) {
-          let newCart = prevState.cart;
-          newCart[existingProductIndex].quantity += item.quantity;
-          cart = [...newCart];
-        } else {
-          cart = [...prevState.cart, item];
-        }
-        return ({
-          cart: cart,
-          quantity: prevState.quantity + item.quantity
-        })
-      });
+      if (existingProductIndex >= 0) {
+        let newCart = prevState.cart;
+        newCart[existingProductIndex].quantity += item.quantity;
+        cart = [...newCart];
+      } else {
+        cart = [...prevState.cart, item];
+      }
+      return ({
+        cart: cart,
+        quantity: prevState.quantity + item.quantity
+      })
+    });
   }
   editCartItem = (id, quantity) => {
     this.setState(prevState => {
@@ -97,7 +96,7 @@ class App extends Component {
       </Dialog>
     );
   }
- 
+
   cartFunctions = {
     // addCartItem: this.addCartItem,
     editCartItem: this.editCartItem,
@@ -109,17 +108,17 @@ class App extends Component {
   render() {
     return (
       <CartProvider>
-      <Router >
+        <Router >
 
-        <Navigation cart={this.state.cart} totalQuantity={this.state.quantity} {...this.cartFunctions} />
-        {this.renderWarning()}
-        <Switch>
-          <Route exact path='/' component={HomePage} />
-          <Route exact path='/bicycles/:id' render={(props) => <ProductPage {...props} addCartItem={this.addCartItem} />} />
-          <Route exact path='/checkout' render={() => <Checkout cart={this.state.cart} {...this.cartFunctions}/>} />
+          <Navigation cart={this.state.cart} totalQuantity={this.state.quantity} {...this.cartFunctions} />
+          {this.renderWarning()}
+          <Switch>
+            <Route exact path='/' component={HomePage} />
+            <Route exact path='/bicycles/:id' component={ProductPage} />
+            <Route exact path='/checkout' render={() => <Checkout cart={this.state.cart} {...this.cartFunctions} />} />
 
-        </Switch>
-      </Router>
+          </Switch>
+        </Router>
       </CartProvider>
     );
   }

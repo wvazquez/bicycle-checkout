@@ -47,7 +47,7 @@ const OrderForm = (props) => {
                                                 </IconButton>
                                                 {cartItem.name} <strong className="mx-2">x</strong> {cartItem.quantity}
                                             </td>
-                                            <td>{props.formatMoney(cartItem.price)}</td>
+                                            {/* <td>{props.formatMoney(cartItem.price)}</td> */}
                                         </tr>)
                                 })
                             }
@@ -58,15 +58,15 @@ const OrderForm = (props) => {
 
                             <tr>
                                 <td className="text-black">Cart Subtotal</td>
-                                <td className="text-black">{props.formatMoney(subtotal)}</td>
+                                {/* <td className="text-black">{props.formatMoney(subtotal)}</td> */}
                             </tr>
                             <tr>
                                 <td className="text-black">Taxes and Fees</td>
-                                <td className="text-black">{props.formatMoney(calcTaxes(subtotal))}</td>
+                                {/* <td className="text-black">{props.formatMoney(calcTaxes(subtotal))}</td> */}
                             </tr>
                             <tr>
                                 <td className="text-black font-weight-bold"><strong>Order Total</strong></td>
-                                <td className="text-black font-weight-bold"><strong>{props.formatMoney(calcTotal(subtotal))}</strong></td>
+                                {/* <td className="text-black font-weight-bold"><strong>{props.formatMoney(calcTotal(subtotal))}</strong></td> */}
                             </tr>
                         </tbody>
                     </table>
