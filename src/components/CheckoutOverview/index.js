@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { products } from '../../data/bikerentals.json';
 import { Context } from '../../components/CartProvider';
+import AddOn from "../AddOn";
 
 import './style.css';
 
@@ -8,11 +9,15 @@ const CheckoutOverview = () => {
   const {formatMoney, state, removeCartItem, addCartItem} = useContext(Context);
 
   const handleAddOn = (product) => {
+    console.log('i worked')
     return (state.cart.find((addOn) => addOn.id === product.id)) ? 
       removeCartItem(product.id) : () => { product.quantity = 1; addCartItem(product)};
   }
-  const isChecked = (id) => {
-    return (state.cart.find((addOn) => addOn.id === id)) ? true : false;
+  const renderCheckbox = (product) => {
+    //  return (state.cart.find((addOn) => addOn.id === product.id)) ? 
+    return 
+    // : null
+   
   }
 
   return (
@@ -24,15 +29,10 @@ const CheckoutOverview = () => {
             if (product.product_type === 'accessory' || product.product_type === 'addon') {
               return (
                 <div className="form-group mt-3" key={product.id}>
-                  <label htmlFor={product.id} className="text-black mr-1" data-toggle="collapse"
-                    href={`#${product.id}`} role="button" aria-expanded="false"
+                  <label htmlFor={product.id} className="text-black mr-1"
+                    href={`#${product.id}`} role="button" 
                     aria-controls={product.id}>
-                    {
-                      isChecked(product.id) ?
-                        <input checked={true} onChange={() => handleAddOn(product)} className='mr-1' type="checkbox" value="1" id={product.id} />
-                        :
-                        <input checked={false} onChange={() => handleAddOn(product)} className='mr-1' type="checkbox" value="1" id={product.id} />
-                    }
+                    <AddOn onClick={() => handleAddOn(product)} id={product.id} />
                     {product.name} - <strong>{formatMoney(product.price)}</strong></label>
                   <img className="input-image" src={product.image} alt={`accessory item ${product.name}`} />
                 </div>

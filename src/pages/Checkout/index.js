@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
@@ -18,6 +18,8 @@ import './style.css'
 
 
 class Checkout extends Component {
+    
+    
     state = {
         activeStep: 0,
         steps: [
@@ -40,27 +42,28 @@ class Checkout extends Component {
     }
 
     getStepContent = (step) => {
+        let Context = this.context;
         switch (step) {
             case 0:
                 return (
                     <div className='row justify-content-center'>
-                        <CheckoutOverview cart={this.props.cart} formatMoney={this.props.formatMoney} addCartItem={this.props.addCartItem} removeCartItem={this.props.removeCartItem} />
-                        <OrderForm removeCartItem={this.props.removeCartItem} formatMoney={this.props.formatMoney} cart={this.props.cart} activeStep={this.state.activeStep} handleBack={this.handleBack} handleNext={this.handleNext} stepLength={this.state.steps.length} />
+                        <CheckoutOverview cart={Context.state.cart} formatMoney={Context.formatMoney} addCartItem={Context.addCartItem} removeCartItem={Context.removeCartItem} />
+                        <OrderForm removeCartItem={Context.removeCartItem} formatMoney={Context.formatMoney} cart={Context.state.cart} activeStep={this.state.activeStep} handleBack={this.handleBack} handleNext={this.handleNext} stepLength={this.state.steps.length} />
                     </div>
                 )
 
             case 1:
                 return (
                     <div className='row justify-content-center'>
-                        <BillingForm formatMoney={this.props.formatMoney} />
-                        <OrderForm formatMoney={this.props.formatMoney} cart={this.props.cart} activeStep={this.state.activeStep} handleBack={this.handleBack} handleNext={this.handleNext} stepLength={this.state.steps.length} />
+                        <BillingForm formatMoney={Context.formatMoney} />
+                        <OrderForm formatMoney={Context.formatMoney} cart={Context.state.cart} activeStep={this.state.activeStep} handleBack={this.handleBack} handleNext={this.handleNext} stepLength={this.state.steps.length} />
                     </div>
                 )
             case 2:
                 return (
                     <div className='row justify-content-center'>
-                        <CreditCardForm formatMoney={this.props.formatMoney} />
-                        <OrderForm formatMoney={this.props.formatMoney} cart={this.props.cart} activeStep={this.state.activeStep} handleBack={this.handleBack} handleNext={this.handleNext} stepLength={this.state.steps.length} />
+                        <CreditCardForm formatMoney={Context.formatMoney} />
+                        <OrderForm formatMoney={Context.formatMoney} cart={Context.state.cart} activeStep={this.state.activeStep} handleBack={this.handleBack} handleNext={this.handleNext} stepLength={this.state.steps.length} />
                     </div>
                 );
             default:
@@ -151,5 +154,7 @@ class Checkout extends Component {
     }
 
 }
+// Context = useContext(Context);
+Checkout.contextType = Context;
 
 export default Checkout;
