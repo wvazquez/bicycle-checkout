@@ -23,8 +23,14 @@ class ProductPage extends Component {
         const urlID = parseInt(this.props.match.params.id);
         let { id, name, price, image, product_type } = products.find(element => (element.id === urlID));
         this.setState({ id: id, name: name, price: price, image: image, product_type: product_type });
+
+        
+        /**
+         * DESCRIPTION: Refs provide a way to access DOM nodes or React elements created in the render method. 
+         * Creates a Ref so we can later access the instance of quantity controls state and methods.
+         */
         this.quantityControl = React.createRef();
-        console.log("this.quantityControl", this.quantityControl)
+
         //need to eventually implement id's that are not found.
     }
 
@@ -35,12 +41,9 @@ class ProductPage extends Component {
     // Starts animation and add the item to the cart. 
     handleAddCartItem = async (addCartItem) => {
         await this.setState({quantity: this.quantityControl.current.state.quantity});
-        console.log("this.state",this.state)
-        console.log("this.quantityControl", this.quantityControl)
         addCartItem(this.state);
         this.buttonAnimate();
         this.quantityControl.current.resetQuantity();
-        console.log("this.state",this.state)
     }
 
     buttonAnimate = () => {
@@ -48,17 +51,11 @@ class ProductPage extends Component {
         this.setState(prevState => ({animate: !prevState.animate}));
         this.timeoutID = setTimeout(() => { 
             this.setState(prevState => ({animate: !prevState.animate}));;
-            
             }, 
             2500
         );
     }
-    // setQuantity = (quantity) => {
-    //     this.setState({quantity: quantity});
-    // }
-    // resetQuantity = () => {
-    //     this.setState({quantity: 1});
-    // }
+
 
     render() {
         let { image, name, price, quantity } = this.state;
@@ -76,6 +73,10 @@ class ProductPage extends Component {
                                         <div className="col-lg-5 ml-auto">
                                             <h2 className="text-primary">{name} - {formatMoney(price)}</h2>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non eos inventore aspernatur voluptatibus ratione odit molestias molestiae, illum et impedit veniam modi sunt quas nam mollitia earum perferendis, dolorem. Magni.</p>
+                                            
+                                            {/**
+                                                Passes the ref to quantity controls to access current instance state and methods.
+                                             */}
                                             <QuantityControls ref={this.quantityControl}/>
                                             {
                                                 !this.state.animate ?

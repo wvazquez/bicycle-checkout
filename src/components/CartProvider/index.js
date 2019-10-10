@@ -14,7 +14,8 @@ class CartProvider extends Component{
             <Context.Provider value={{ state: this.state,
                                         formatMoney : this.formatMoney,
                                         removeCartItem : this.removeCartItem,
-                                        addCartItem: this.addCartItem
+                                        addCartItem: this.addCartItem,
+                                        editCartItem: this.editCartItem
                                     }}>
                 {this.props.children}
             </Context.Provider>
