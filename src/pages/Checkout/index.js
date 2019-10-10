@@ -133,28 +133,34 @@ class Checkout extends Component {
     }
     
     render() {
-        console.log(this.props)
+        let Context = this.context;
         return (
             <div>
                 {
-                    // (this.props.cart.length > 0)
-                    //     ?
+                    (Context.state.cart.length > 0)
+                        ?
                         this.renderStepper()
-                        // : <>
-                        //     <div className="jumbotron text-center">
-                        //         <h2>Your Cart is currently empty.</h2>
-                        //         <h4>Check out these rentals you might be intrested in!</h4>
-                        //     </div>
+                        : <>
+                            <div className="jumbotron text-center">
+                                <h2>Your Cart is currently empty.</h2>
+                                <h4>Check out these rentals you might be intrested in!</h4>
+                            </div>
 
-                        //     <ProductStore />
-                        // </>
+                            <ProductStore />
+                        </>
                 }
             </div>
         );
     }
 
 }
-// Context = useContext(Context);
+/***
+ 
+    contextType property in a class can be assigned a Context object created by React.createContext(). 
+    This lets you consume the nearest current value of that context by using this.context
+
+ ***/
+
 Checkout.contextType = Context;
 
 export default Checkout;

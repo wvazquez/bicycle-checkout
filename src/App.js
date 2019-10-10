@@ -115,7 +115,7 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={HomePage} />
             <Route exact path='/bicycles/:id' component={ProductPage} />
-            <Route exact path='/checkout' render={() => <Checkout cart={this.state.cart} {...this.cartFunctions} />} />
+            <Route exact path='/checkout' component={Checkout} />
 
           </Switch>
         </Router>

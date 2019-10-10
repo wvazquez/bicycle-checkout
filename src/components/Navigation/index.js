@@ -13,7 +13,7 @@ import Button from '@material-ui/core/Button';
 
 import SideCart from '../SideCart';
 
-
+import {Context} from '../CartProvider';
 
 import { HashLink } from 'react-router-hash-link';
 import { Link } from 'react-router-dom';
@@ -70,7 +70,8 @@ class Navigation extends Component {
   };
 
   render() {
-    const total = this.props.totalQuantity;
+    let Context = this.context;
+    const total = Context.state.quantity;
     return (
 
       <div className="grow">
@@ -118,5 +119,7 @@ class Navigation extends Component {
 
   }
 }
+
+Navigation.contextType  = Context;
 
 export default Navigation;
