@@ -23,7 +23,11 @@ class SideCartItem extends Component {
   }
 
   componentDidMount() {
-    this.setState({ quantity: this.props.quantity });
+    console.log(this.state)
+    let Context = this.context;
+    let { quantity } = Context.state
+
+    this.setState({ quantity: quantity });
 
     /**
      * DESCRIPTION: Refs provide a way to access DOM nodes or React elements created in the render method. 
@@ -31,53 +35,31 @@ class SideCartItem extends Component {
     */
     this.quantityControl = React.createRef();
   }
-  handleEdit = () => {
+  toggleIsEditing = () => {
     this.setState(prevState => ({ isEditing: !prevState.isEditing }));
   }
-  handleEditChange = (event) => {
-    console.log(event.target.value.trim());
-    if (parseInt(event.target.value)) {
-      return this.setState({ quantity: event.target.value });
-    }
 
-    if (event.target.value.trim().length === 0) {
-      this.setState({ quantity: "" });
-    }
-  }
   handleSave = (id) => {
-    let Context = this.context;
-    console.log("Context",Context);
-    if (this.state.quantity === 0) {
-      this.props.removeCartItem(id);
+    let { removeCartItem, editCartItem } = this.context;
+    let { quantity } = this.quantityControl.current.state;
+
+    if (this.quantityControl.current.state.quantity === 0) {
+      removeCartItem(id);
     } else {
-      console.log("this.quantityControl.current.state.quantity",this.quantityControl.current.state.quantity)
-      Context.editCartItem(id, this.quantityControl.current.state.quantity);
+      console.log("quantity",quantity);
+      editCartItem(id, quantity);
     }
 
-    this.handleEdit();
+    this.toggleIsEditing();
   }
   handleCancel = () => {
-    this.handleEdit();
+    this.toggleIsEditing();
     this.setState(prevState => ({ quantity: prevState.quantity }));
   }
-  handleQuantity = (event) => {
-    const action = event.currentTarget.getAttribute('name');
-    if (action === 'decrease') {
-      if (this.checkQuantity()) {
-        this.setState({ quantity: this.state.quantity - 1 });
-      }
-      return;
-    } else {
-      this.setState({ quantity: this.state.quantity + 1 });
-    }
-  }
-  checkQuantity = () => {
-    if (this.state.quantity > 0) {
-      return true
-    }
-  }
+  
+  
   render() {
-    let Context = this.context;
+    let {formatMoney, removeCartItem } = this.context;
     return (
 
       <ListItem key={this.props.id} alignItems="center" className="cart-item">
@@ -89,14 +71,14 @@ class SideCartItem extends Component {
             primary={this.props.name}
           />
 
-              <Typography
-                component="span"
-                className="sidecartitem-title"
-                variant="body2"
-                color="textPrimary"
-              >
+          <Typography
+            component="span"
+            className="sidecartitem-title"
+            variant="body2"
+            color="textPrimary"
+          >
 
-                {Context.formatMoney(this.props.price)}/ each
+            {formatMoney(this.props.price)}/ each
                   </Typography>
 
 
@@ -106,7 +88,7 @@ class SideCartItem extends Component {
             variant="body2"
             color="textPrimary"
           >
-            Quantity: {this.props.quantity}
+            Quantity: {this.state.quantity}
           </Typography>
         </div>
         <Transition className="transition-container"
@@ -122,8 +104,9 @@ class SideCartItem extends Component {
                 <p>Quantity: </p>
                 {/**
                 *  Passes the ref to quantity controls to access current instance state and methods.
+                *  Starting quantity is the current component state quantity
                 */}
-                <QuantityControls  ref={this.quantityControl}/>
+                <QuantityControls ref={this.quantityControl} quantity={this.state.quantity}/>
               </div>
 
             </animated.div>
@@ -133,11 +116,11 @@ class SideCartItem extends Component {
           this.state.isEditing ?
             <>
 
-                    <IconButton aria-label="Save shopping cart item" color="inherit"
-                      onClick={() => { this.handleSave(this.props.id) }}
-                    >
-                      <Save color='primary' />
-                    </IconButton>
+              <IconButton aria-label="Save shopping cart item" color="inherit"
+                onClick={() => { this.handleSave(this.props.id) }}
+              >
+                <Save color='primary' />
+              </IconButton>
 
 
               <IconButton aria-label="cancel cart item" color="inherit"
@@ -150,21 +133,21 @@ class SideCartItem extends Component {
             :
             <>
               <IconButton aria-label="edit shopping cart item" color="inherit"
-                onClick={this.handleEdit}
+                onClick={this.toggleIsEditing}
               >
                 <Edit color='primary' />
               </IconButton>
 
 
-                    <IconButton aria-label="delete shopping cart item" color="inherit"
-                      edge="end"
-                      onClick={() => {
-                        console.log('hello: ', this.props)
-                        Context.removeCartItem(this.props.id)
-                      }}
-                    >
-                      <Delete color='primary' />
-                    </IconButton>
+              <IconButton aria-label="delete shopping cart item" color="inherit"
+                edge="end"
+                onClick={() => {
+                  console.log('hello: ', this.props)
+                  removeCartItem(this.props.id)
+                }}
+              >
+                <Delete color='primary' />
+              </IconButton>
 
             </>
         }

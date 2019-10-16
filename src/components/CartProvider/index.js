@@ -42,6 +42,9 @@ class CartProvider extends Component{
         });
     }
     editCartItem = (id, quantity) => {
+      console.log("edit provider quantity",quantity);
+      console.log("edit provider id",id);
+
         this.setState(prevState => {
           let existingProductIndex = prevState.cart.findIndex((cartItem) => (cartItem.id === id));
     

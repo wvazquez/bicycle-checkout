@@ -1,12 +1,15 @@
 /**
  * To access component state and methods pass a ref (Ref API)
+ * 
+ * Component accepts a quantity attribute to set the starting quantity value. 
+ * If no value is passed, it defaults to 1.
  */
 
 import React, { Component } from 'react';
 
 class QuantityControls extends Component {
     state = {
-        quantity: 1
+        quantity: this.props.quantity || 1
     }
 
     increaseQuantity = () => {
