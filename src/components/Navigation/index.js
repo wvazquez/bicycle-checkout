@@ -1,41 +1,26 @@
 import React, { Component } from 'react';
+
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
-import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import Button from '@material-ui/core/Button';
-
-
-import SideCart from '../SideCart';
-
-import {Context} from '../CartProvider';
 
 import { HashLink } from 'react-router-hash-link';
 import { Link } from 'react-router-dom';
 
+import SideCart from '../SideCart';
+import { Context } from '../CartProvider';
 import './style.css';
-
 
 
 class Navigation extends Component {
   state = {
     mobileMenuElement: null,
-
-    isShoppingCartOpen: false,
     isMobileMenuOpen: false,
-  };
-
-  toggleSideCart = (open) => event => {
-    if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-      return;
-    }
-
-    this.setState({ isShoppingCartOpen: open });
   };
 
   renderMobileMenu = () => (
@@ -70,10 +55,7 @@ class Navigation extends Component {
   };
 
   render() {
-    let Context = this.context;
-    const total = Context.state.quantity;
     return (
-
       <div className="grow">
         <AppBar position="static" className='appbar'>
           <Toolbar>
@@ -90,15 +72,9 @@ class Navigation extends Component {
               <Link to='/checkout'> <Button className="button">Checkout</Button></Link>
 
             </div>
-            <IconButton aria-label="show 4 new items in shopping cart" color="inherit"
-              edge="end"
-              aria-controls='shopping-cart'
-              aria-haspopup="true"
-              onClick={this.toggleSideCart(true)}>
-              <Badge badgeContent={total} color="secondary">
-                <ShoppingCart color='primary' />
-              </Badge>
-            </IconButton>
+            
+            <SideCart />
+            
             <div className="sectionMobile">
               <IconButton
                 aria-label="show more"
@@ -113,13 +89,10 @@ class Navigation extends Component {
           </Toolbar>
         </AppBar>
         {this.renderMobileMenu()}
-        <SideCart editCartItem={this.props.editCartItem} isShoppingCartOpen={this.state.isShoppingCartOpen} toggleSideCart={this.toggleSideCart} cart={this.props.cart}/>
       </div>
     );
-
   }
 }
 
 Navigation.contextType  = Context;
-
 export default Navigation;

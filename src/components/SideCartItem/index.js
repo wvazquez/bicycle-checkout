@@ -23,7 +23,6 @@ class SideCartItem extends Component {
   }
 
   componentDidMount() {
-    console.log(this.state)
     let Context = this.context;
     let { quantity } = Context.state
 

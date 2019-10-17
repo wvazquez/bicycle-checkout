@@ -42,12 +42,8 @@ class CartProvider extends Component{
         });
     }
     editCartItem = (id, quantity) => {
-      console.log("edit provider quantity",quantity);
-      console.log("edit provider id",id);
-
         this.setState(prevState => {
           let existingProductIndex = prevState.cart.findIndex((cartItem) => (cartItem.id === id));
-    
           let newCart = prevState.cart;
           let newQuantity = quantity - newCart[existingProductIndex].quantity;
           newCart[existingProductIndex].quantity = quantity
@@ -57,7 +53,6 @@ class CartProvider extends Component{
     }
     
     removeCartItem = (id) => {
-        console.log("i reached here: ", id)
         let productToRemove = this.state.cart.find((cartItem) => cartItem.id === id);
         let newCart = this.state.cart.filter(cartItem => cartItem.id !== id);
         

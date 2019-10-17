@@ -1,54 +1,80 @@
-import React from 'react';
+import React, { Component } from 'react';
+
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
+import IconButton from '@material-ui/core/IconButton';
+import Badge from '@material-ui/core/Badge';
+import ShoppingCart from '@material-ui/icons/ShoppingCart';
+
 
 import SideCartItem from '../SideCartItem';
 import { Context } from '../CartProvider';
 import './style.css';
 
+class SideCart extends Component {
 
-const renderSideCart = (props) => (
-  <Context.Consumer>
-    {
-      ({ state }) => (
-        <SwipeableDrawer
-          anchor="right"
-          open={props.isShoppingCartOpen}
-          onClose={props.toggleSideCart(false)}
-          onOpen={props.toggleSideCart(true)}
-        >
-          <div
-            className="sidecart-container"
-            role="presentation"
-          >
-            <h2 className='sidecart-title'>Shopping Cart</h2>
-            
-            <Divider />
-            <List>
-              {renderSideCartItems(state.cart, props)}
-            </List>
-
-          </div>
-        </SwipeableDrawer>
-      )
-    }
-
-  </Context.Consumer>
-);
-
-const renderSideCartItems = (cart, props) => {
-
-  if (cart.length > 0) {
-    return cart.map((cartItem, index) => {
-      
-      return (
-        <SideCartItem  key={cartItem.id.toString()} {...cartItem} />
-
-      )
-    });
+  state = {
+    isOpen: false
   }
-  return <p>Your shopping cart is currently empty</p>
-};
+ 
+  toggleIsOpen = () => {
+    this.setState(prevState => ({isOpen: !prevState.isOpen}));
+  };
 
-export default renderSideCart;
+  setIsOpen = open => {
+    this.setState({ isOpen: open });
+  }
+
+  render() {
+    let total = this.context.state.quantity;
+
+    return (
+      <>
+      <IconButton aria-label="show 4 new items in shopping cart" color="inherit"
+              edge="end"
+              aria-controls='shopping-cart'
+              aria-haspopup="true"
+              
+              onClick={this.toggleIsOpen}>
+              
+              <Badge badgeContent={total} color="secondary">
+                <ShoppingCart color='primary' />
+              </Badge>
+            </IconButton>
+      {this.state.isOpen ?
+      <SwipeableDrawer
+        anchor="right"
+        open={this.state.isOpen}
+        onClose={() => this.setIsOpen(false)}
+        onOpen={() => this.setIsOpen(true)}
+      >
+        <div
+          className="sidecart-container"
+          role="presentation"
+        >
+          <h2 className='sidecart-title'>Shopping Cart</h2>
+
+          <Divider />
+          <List>
+            {this.renderSideCartItems()}
+          </List>
+
+        </div>
+      </SwipeableDrawer>
+       : null}
+      </>
+    );
+  }
+
+  renderSideCartItems = () => {
+    let { cart } = this.context.state;
+    if (cart.length > 0) {
+      return cart.map((cartItem, index) => <SideCartItem key={index} {...cartItem} />)
+    }
+    return <p>Your shopping cart is currently empty</p>
+  };
+}
+
+SideCart.contextType = Context;
+export default SideCart;
