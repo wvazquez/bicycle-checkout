@@ -15,7 +15,6 @@ const calcTotal = (subtotal) => {
     return (subtotal * tax) + subtotal
 }
 const OrderForm = (props) => {
-    console.log(props)
     let subtotal = 0;
     return (
         <div className="mb-5 orderform-container">

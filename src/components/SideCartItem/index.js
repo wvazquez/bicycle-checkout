@@ -23,9 +23,7 @@ class SideCartItem extends Component {
   }
 
   componentDidMount() {
-    let Context = this.context;
-    let { quantity } = Context.state
-
+    let { quantity } = this.props;
     this.setState({ quantity: quantity });
 
     /**
@@ -45,7 +43,6 @@ class SideCartItem extends Component {
     if (this.quantityControl.current.state.quantity === 0) {
       removeCartItem(id);
     } else {
-      console.log("quantity",quantity);
       editCartItem(id, quantity);
     }
 
@@ -141,7 +138,6 @@ class SideCartItem extends Component {
               <IconButton aria-label="delete shopping cart item" color="inherit"
                 edge="end"
                 onClick={() => {
-                  console.log('hello: ', this.props)
                   removeCartItem(this.props.id)
                 }}
               >

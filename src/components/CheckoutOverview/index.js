@@ -9,16 +9,10 @@ const CheckoutOverview = () => {
   const {formatMoney, state, removeCartItem, addCartItem} = useContext(Context);
 
   const handleAddOn = (product) => {
-    console.log('i worked')
     return (state.cart.find((addOn) => addOn.id === product.id)) ? 
       removeCartItem(product.id) : () => { product.quantity = 1; addCartItem(product)};
   }
-  const renderCheckbox = (product) => {
-    //  return (state.cart.find((addOn) => addOn.id === product.id)) ? 
-    return 
-    // : null
-   
-  }
+
 
   return (
     <div className="col-md-6 mb-5 mb-md-0">

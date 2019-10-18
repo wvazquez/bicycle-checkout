@@ -25,7 +25,6 @@ const ProductStore = () => {
       <div className="store-items row" id="store-items">
       {
             products.map((product, index) => {
-              console.log()
                 let {id,name,image,product_type, price} = product;
                 if(product_type === 'bike'){
                     return (

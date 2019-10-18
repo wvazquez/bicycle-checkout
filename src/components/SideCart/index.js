@@ -70,7 +70,9 @@ class SideCart extends Component {
   renderSideCartItems = () => {
     let { cart } = this.context.state;
     if (cart.length > 0) {
-      return cart.map((cartItem, index) => <SideCartItem key={index} {...cartItem} />)
+      return cart.map((cartItem, index) => {
+        return <SideCartItem key={index} {...cartItem} />
+      })
     }
     return <p>Your shopping cart is currently empty</p>
   };

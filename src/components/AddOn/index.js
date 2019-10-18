@@ -5,9 +5,6 @@ class AddOn extends Component{
     state = {
         isChecked: false
     }
-    componentDidMount(){
-        console.log(this.props)
-    }
 
     render(){
         return(
