@@ -4,8 +4,10 @@
 
 .appbar-title{
     color: #ef7998;
-    /* font-family: "Roboto"; */
     font-family: 'Pacifico', cursive;
+}
+.appbar-title:hover{
+  text-decoration: underline;
 }
 
 .grow{
@@ -37,7 +39,10 @@
   .sectionMobile{
     display: 'flex';
   }
-
+  .sectionMobile > a:hover,
+  .sectionDesktop > a:hover{
+    text-decoration: none;
+  }
 
   @media(min-width: 600px){
     .inputInput {
