@@ -60,9 +60,9 @@ class Navigation extends Component {
         <AppBar position="static" className='appbar'>
           <Toolbar>
             <Link to='/'>
-              <Typography className="appbar-title" variant="h6" noWrap>
+              <h3 className="appbar-title">
                 Bicycle Rental
-              </Typography>
+              </h3>
             </Link>
 
             <div className="grow" />

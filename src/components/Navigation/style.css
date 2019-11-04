@@ -3,7 +3,9 @@
 }
 
 .appbar-title{
-    color: #007bff
+    color: #ef7998;
+    /* font-family: "Roboto"; */
+    font-family: 'Pacifico', cursive;
 }
 
 .grow{
