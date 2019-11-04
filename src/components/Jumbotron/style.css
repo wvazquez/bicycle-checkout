@@ -17,11 +17,14 @@
     align-items: center;
     color: var(--mainWhite);
 }
-
+.jumbotron-text{
+    font-size: 1rem;
+}
 .jumbotron-title {
     color: var(--mainPink);
-    font-size: 4rem;
+    font-size: 2rem;
 }
+
 .jumbotron-link {
     font-size: 1.5rem;
     color: var(--mainWhite);
@@ -31,4 +34,14 @@
     background: var(--mainBlack);
     color: var(--mainPink);
     border: 0.2rem solid var(--mainBlack);
+}
+
+@media(min-width: 800px){
+    .jumbotron-title {
+        font-size: 3.5rem;
+    }
+    .jumbotron-text{
+        font-size: 2.5rem;
+    }
+
 }
