@@ -31,7 +31,7 @@ class SideCart extends Component {
 
     return (
       <>
-      <IconButton aria-label="show 4 new items in shopping cart" color="inherit"
+      <IconButton aria-label="shopping cart" color="inherit"
               edge="end"
               aria-controls='shopping-cart'
               aria-haspopup="true"

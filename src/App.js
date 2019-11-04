@@ -12,6 +12,7 @@ import Navigation from './components/Navigation';
 import HomePage from './pages/HomePage';
 import ProductPage from './pages/ProductPage';
 import Checkout from './pages/Checkout';
+import Products from './pages/Products';
 
 import CartProvider from './components/CartProvider';
 
@@ -115,6 +116,7 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={HomePage} />
             <Route exact path='/bicycles/:id' component={ProductPage} />
+            <Route exact path='/rentals' component={Products} />
             <Route exact path='/checkout' component={Checkout} />
 
           </Switch>

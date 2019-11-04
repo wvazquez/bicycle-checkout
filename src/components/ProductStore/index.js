@@ -5,7 +5,7 @@ import {products} from '../../data/bikerentals.json';
 
 import './style.css';
 
-const ProductStore = () => {
+const ProductStore = (props) => {
   // const placeholderImages = [
   //   '/bicycles/mountainbike.jpg',
   //   "/bicycles/roadbike.jpg",
@@ -19,7 +19,7 @@ const ProductStore = () => {
     <div className="container">
       <div className="row">
         <div className="col-10 mx-auto col-sm-6 text-center">
-          <h1 className="text-capitalize">Bicycle <strong className="banner-title ">Rentals</strong></h1>
+          <h1 className="text-capitalize section-title">{props.title}</h1>
         </div>
       </div>
       <div className="store-items row" id="store-items">

@@ -4,7 +4,7 @@ import ProductStore from '../../components/ProductStore';
 const HomePage = () => (
     <>
         <Jumbotron />
-        <ProductStore />
+        <ProductStore title="Featured Rentals"/>
     </>
 
 );

@@ -3,13 +3,11 @@ import React, { Component } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import Button from '@material-ui/core/Button';
 
-import { HashLink } from 'react-router-hash-link';
 import { Link } from 'react-router-dom';
 
 import SideCart from '../SideCart';
@@ -34,7 +32,7 @@ class Navigation extends Component {
       onClose={this.handleMenuClose}
     >
       <Link to='/'><MenuItem>Home</MenuItem></Link>
-      <HashLink to='/#store'><MenuItem>Rentals</MenuItem></HashLink>
+      <Link to='/rentals'><MenuItem>Rentals</MenuItem></Link>
       <Link to='/checkout'><MenuItem>Checkout</MenuItem></Link>
     </Menu>
 
@@ -68,13 +66,13 @@ class Navigation extends Component {
             <div className="grow" />
             <div className="sectionDesktop">
               <Link to='/'> <Button className="button">Home</Button></Link>
-              <HashLink to='/#store'><Button className="button">Rentals</Button></HashLink>
+              <Link to='/rentals'><Button className="button">Rentals</Button></Link>
               <Link to='/checkout'> <Button className="button">Checkout</Button></Link>
 
             </div>
-            
+
             <SideCart />
-            
+
             <div className="sectionMobile">
               <IconButton
                 aria-label="show more"
@@ -94,5 +92,5 @@ class Navigation extends Component {
   }
 }
 
-Navigation.contextType  = Context;
+Navigation.contextType = Context;
 export default Navigation;

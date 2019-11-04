@@ -92,7 +92,7 @@ class ProductPage extends Component {
                         </div>
                     </div>
                 </div>
-                <ProductStore />
+                {/* <ProductStore /> */}
             </div>
         )
 
