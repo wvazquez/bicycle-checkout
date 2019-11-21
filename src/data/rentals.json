@@ -1,0 +1,123 @@
+{
+    "rentals": [
+        {
+            "men" : [
+                {
+                    "id": 1,
+                    "name": "RetroSpec Urban Comutter",
+                    "price": 14.99,
+                    "image" : "http://via.placeholder.com/250x250?text=Adult%20Male%20Bike",
+                    "product_type": "bike"
+                },
+                {
+                    "id": 2,
+                    "name": "Public V1",
+                    "price": 19.99,
+                    "image" : "http://via.placeholder.com/250x250?text=Adult%20Male%20Bike",
+                    "product_type": "bike"
+                },
+                {
+                    "id": 3,
+                    "name": "Schwinn Central",
+                    "price": 14.99,
+                    "image" : "http://via.placeholder.com/250x250?text=Adult%20Male%20Bike",
+                    "product_type": "bike"
+                }
+            ]
+        },{
+            "women": [
+                {
+                    "id": 4,
+                    "name":"Adult Female Bike",
+                    "price": 14.99,
+                    "image" : "",
+                    "product_type" : "bike"
+                },
+                {
+                    "id": 5,
+                    "name":"Adult Female Bike",
+                    "price": 14.99,
+                    "image" : "",
+                    "product_type" : "bike"
+                },
+                {
+                    "id": 6,
+                    "name":"Adult Female Bike",
+                    "price": 14.99,
+                    "image" : "",
+                    "product_type" : "bike"
+                }
+            ],
+            "kids": [
+                {
+                    "id": 7,
+                    "name":"Youngster Tricycle Bike",
+                    "price": 14.99,
+                    "image" : "",
+                    "product_type" : "bike"
+                },
+                {
+                    "id": 8,
+                    "name":"Adult Female Bike",
+                    "price": 14.99,
+                    "image" : "",
+                    "product_type" : "bike"
+                },
+                {
+                    "id": 9,
+                    "name":"Adult Female Bike",
+                    "price": 14.99,
+                    "image" : "",
+                    "product_type" : "bike"
+                }
+            ]
+        }      
+    ],
+    "accessories": [
+        {
+            "id": 10,
+            "name": "Kids Unisex Helmet",
+            "price": 3.50,
+            "image": "http://via.placeholder.com/250x250?text=Kids%20Unisex%20Helmet",
+            "product_type": "accessory"
+        },
+        {
+            "id": 11,
+            "name": "Adult Unisex Helmet",
+            "price": 9.50,
+            "image": "http://via.placeholder.com/250x250?text=Kids%20Unisex%20Helmet",
+            "product_type": "accessory"
+        },
+        
+        {
+            "id": 12,
+            "name": "City Map",
+            "price": 0.99,
+            "image": "http://via.placeholder.com/250x250?text=Kids%20Unisex%20Helmet",
+            "product_type": "accessory"
+        }
+    ],
+    "addon": [
+        {
+            "id": 15,
+            "name": "Bicycle Insurance",
+            "price": 4.99,
+            "image": "",
+            "product_type": "add-on"
+        },
+        {
+            "id": 16,
+            "name": "Group Tour Guide",
+            "price": 24.99,
+            "image": "",
+            "product_type": "add-on"
+        },
+        {
+            "id": 17,
+            "name": "Private Tour Guide",
+            "price": 24.99,
+            "image": "",
+            "product_type": "add-on"
+        }
+    ]
+  }
